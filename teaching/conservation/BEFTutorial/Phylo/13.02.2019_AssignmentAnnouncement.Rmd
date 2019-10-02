@@ -1,0 +1,77 @@
+---
+title: "Common bugs"
+output: html_document
+---
+Hi everyone,
+
+In this afternoon's tutorial, we made a few announcements that we'd like to reiterate for the whole class on Canvas.
+**Please read the following carefully, as they may affect your data analysis for the first R assignment on BEF relationships:**
+
+### 1. How/when to get TA help
+
+You probably know that next week is reading break. Over the break, the teaching team (Jonathan, John, and Mairin) will not be readily available to help you out with coding issues that come up. If you are having trouble running your R code for the assignment, please **email Mairin before Sunday, February 17**. Emailing after this date does not guarantee a reply before your assignment is due.
+
+### 2. Common code issue
+
+In Wednesday's tutorial, we noticed that a lot of students were identifying which species to remove from the phylogenetic tree with something like this:
+
+```
+absent.species <- colnames(bef.data)[
+  which(bef.data[1,3:20]==0)
+]
+```
+
+**This code will give you the wrong output!!!** This is because of how R sees the `bef.data` frame after you select only columns 3-20 (i.e. with `bef.data[1,3:20]`), and how the `which()` function works. 
+
+To ensure that your code identifies the right species to prune from the phylogenetic tree, remove the column indexing from `3:20` and change your code to something like this:
+
+```
+absent.species <- colnames(bef.data)[
+  which(bef.data[1, ]==0)
+]
+```
+
+### 3. Quirks of the phylogenetic tree
+
+The phylogenetic tree we supplied to you, `phylogeny.phy`, includes three species that are not a part of the community data: *Vicvi*, *Queel*, and *Quema*.
+  
+For example, even though the community in plot X2 only includes *Lesca*, the phylogenetic tree created by `drop.tip` looks like this:
+
+```{r, eval=T, echo=F}
+#!# Feb 11 to-do:
+# Email Jonathan - extra species in the phylogeny?
+#   Email students from today about the extra species
+# Clearer step-by-step instructions?
+#   Use terminology like drop.tip
+#   Linear model results with summary()
+
+library(ape)
+tree<-read.tree("~/Documents/Teaching/416_Spring19/Tutorials/BEFTutorial/Phylo/phylogeny.phy")
+
+bef.data<-read.csv("~/Documents/Teaching/416_Spring19/Tutorials/BEFTutorial/BEF2.csv", header=T)
+plots<-unique(bef.data$Plot)
+
+#!# My changes
+results.df <- data.frame(
+  Plots = plots,
+  PD = NaN,
+  SR = NaN,
+  AAB = NaN
+)
+
+# PD<-NULL
+# Richness<-NULL
+# Biomass<-NULL
+
+sub.data <- subset(bef.data, Plot == "X2")
+drop.spp <- colnames(sub.data)[
+  which(sub.data[1, ]==0)
+]
+
+phylo2 <- drop.tip(phy = tree, tip = drop.spp)
+plot(phylo2)
+```
+
+You can ignore these species - do not remove them from the phylogenetic trees you create for each community (it's easier that way!)
+
+That's all for now folks, have a great reading break!

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/projects/spatial_mapping/</loc>
+  </url>
+  
+  <url>
+    <loc>/post/test2/</loc>
+    <lastmod>2019-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/simulations/redfish/</loc>
+    <lastmod>2019-05-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/simulations/stonessheep/</loc>
+    <lastmod>2019-05-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/</loc>
+  </url>
+  
+  <url>
+    <loc>/projects/decision_making/</loc>
+  </url>
+  
+  <url>
+    <loc>/teaching/code_for_all/</loc>
+  </url>
+  
+  <url>
+    <loc>/teaching/conservation/</loc>
+  </url>
+  
+  <url>
+    <loc>/projects/simulations/</loc>
+  </url>
+  
+  <url>
+    <loc>/projects/simulations/shiny_pva/</loc>
+  </url>
+  
+  <url>
+    <loc>/teaching/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-05-22T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2019-05-22T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/2015-07-23-r-rmarkdown/</loc>
+    <lastmod>2019-05-22T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2015-07-23-r-rmarkdown/</loc>
+    <lastmod>2019-05-22T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2019-05-22T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/r-markdown/</loc>
+    <lastmod>2019-05-22T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-05-22T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/plot/</loc>
+    <lastmod>2019-05-22T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/regression/</loc>
+    <lastmod>2019-05-22T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/testing/</loc>
+    <lastmod>2019-05-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/about/_index0/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/teaching/conservation/rtuts/12.12.2018.biol416.rphylotutorial_post/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/teaching/conservation/rtuts/biol416_introduction_to_r_notes/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/teaching/conservation/rtuts/biol416_tutorial5_bef_instructions/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+  </url>
+  
+</urlset>

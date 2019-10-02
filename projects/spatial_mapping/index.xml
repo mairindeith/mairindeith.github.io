@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spatial Mapping of Bushmeat Hunting on Mairin Deith</title>
+    <link>/projects/spatial_mapping/</link>
+    <description>Recent content in Spatial Mapping of Bushmeat Hunting on Mairin Deith</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="/projects/spatial_mapping/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

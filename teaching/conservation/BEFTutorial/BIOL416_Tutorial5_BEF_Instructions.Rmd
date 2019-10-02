@@ -1,0 +1,85 @@
+---
+title: "BIOL 416 R Tutorial 5 - Biodiversity-ecosystem function in plant communities"
+author: "Mairin Deith"
+output:
+  html_document:
+    highlight: zenburn
+    theme: spacelab
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
+---
+
+The purpose of this tutorial is to investigate how the **species richness** of plant communities influences the **average biomass produced** by those communities.
+
+We will be working a dataset that includes observations on the species richness and above-ground biomass production of study plots of plant communities. 
+
+The data used in this analysis is contained in the csv file **BIOL416_Tutorial5_BEFData.csv**, which can be downloaded off of Canvas in the Tutorial 5 folder.
+
+Try to follow these steps on your own first, but don't worry if you get stuck. 
+We will go through the analysis together as a class, step-by-step, after you  have a chance to try each stage of analysis.  
+
+## Instructions
+
+### Load in the BEF data and review its structure
+
+1. Start up a new R script and load the .csv file into your R session - you can do this using the `file.choose()` function we have used previously, or by using file paths in your R script. [Click here for more information on using file paths in R.](http://rfunction.com/archives/1001)
+
+2. Examine the BEF data. What data are represented in columns? In rows? What data populates the data frame?
+
+### BEF analysis: overview
+
+We want to find out if there is a significant relationship between species richness and biomass production in these plant communities. To test for statistical significant, we will conduct two linear regressions between SR and B: one in which SR is transformed by the natural logarithm, ln, and another where SR is in its raw state.
+
+To do this, we will:
+
+   a) Calculate richness and mean biomass in each community
+   b) Run a linear regression of both: 
+   $$Biomass \sim m * Richness + b$$ 
+   $$Biomass \sim m * ln(Richness) + b$$
+   ...where $m$ is the coefficient/slope for $Richness$ and $b$ is the y-intercept of the linear regression.
+   
+   c) Interpret and plot the results of (b)
+   
+
+**Question: Why are we interested in comparing ln-transformed and un-transformed species richness data?**
+
+### BEF analysis: Step-by-step
+
+1. Start with just one plot, `X2`. Create a data frame that includes **only observations for plot `X2`**. 
+
+*Hint: take a look at the `subset()` function if you're stuck*. 
+
+2. Calculate the species richness in the `X2` plot. SR changes year-per-year in some plots; **only calculate SR for the first year of observations!**
+
+3. Calculate the average biomass production (averaged across all years of observation) in `X2`.
+
+4. Repeat steps 1-3 for the remaining plots. 
+
+*Hint: You _should not_ do this by hand! we can use a `for()` loop for this. If you don't know what a for-loop is, stop here - we will review this as a class. If you're feeling ambitious, [you can read about how to write a for-loop here](https://www.r-bloggers.com/how-to-write-the-first-for-loop-in-r/)*. 
+
+5. Don't forget to store your results somewhere! Make a data frame of your BEF values including the Plot ID, species richness, and biomass production for each plot. It is easiest to do this before you run the loop in Step 4. 
+
+
+6. Create and run a linear model that looks at:
+
+    a. Biomass as a function of species richness
+    $$Biomass \sim m * Richness + b$$
+    
+    b. Biomass as a function of ln-transformed species richness. *Hint: in R, `log(X)` takes the natural logarithm of some object, X. `log10()` is used to take the base-10 logarithm that you're probably used to*. 
+        $$Biomass \sim m * ln(Richness) + b$$
+
+7. Plot each of these relationships with a scatterplot and overlay the linear relationships created in Step 6 on the data. 
+
+8. Interpret these relationships - what do the coefficients and intercepts tell us about species richness and how it influences biomass production?
+
+9. Compare the ability of the ln-transformed and untransformed species richness to predict biomass production. 
+
+*Hint: you can do this by considering the `Multiple R-squared` result from the linear model objects created in Step 6; we will discuss what R-squared is in class if you are unfamiliar*. 
+
+10. Write up your observations to answer the questions posted on Canvas in the Tutorial 5 - Biodiversity & Ecosystem Function folder. Instructions are on the last slide of the [BIOL416 T5.pdf](https://canvas.ubc.ca/courses/18228/pages/tutorial-5-biodiversity-and-ecosystem-function?module_item_id=1032074)

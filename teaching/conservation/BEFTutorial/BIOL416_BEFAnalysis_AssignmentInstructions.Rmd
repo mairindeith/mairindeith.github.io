@@ -1,0 +1,45 @@
+---
+title: 'BIOL 416 Assignment 1'
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
+---
+<center>
+### Biodiversity - Ecosystem Function
+</center>
+
+In Tutorials 5 and 6, we have been analysing different facets of biodiversity and how it relates to ecosystem function in experimental plant communities. 
+
+The four measures of biodiversity we calculated from the BEF2.csv dataset are:
+
+1. Species richness
+2. Ln-transformed species richness
+3. Phylogenetic diversity using a phylogeny based on on genetic substitutions (the original `phylogeny.phy` file from Tutorial 6)
+4. Phylogenetic diversity with a phylogenetic tree that has been transformed to have branch lengths that reflect time rather than substitutions (the phylogeny created by the `chronoMPL()` function from the `ape` library)
+
+*** 
+
+Now that you have examined the biodiversity - ecosystem function relationship in these plant communities, please write up a written report that addresses the following:
+
+1. *2 points*: Show your plots of species richness against above-ground biomass - these plots should include axes titles with appropriate units of measure and with an overlaid line of best fit from the linear model. Show both untransformed and transformed species richness' relationships. 
+
+2. *1 point*: Describe the shape of the relationship between species richness and productivity. Also describe the linear model that generates this observed relationship. How does the observed relationship compare to the expected shape of the B-EF relationship? What mechanisms of the B-EF relationship does your model predict? How confident are you of this? 
+
+3. *1 point*: Discuss the likely ecological process(es) that you think shaped the observed richness-biomass relationship. Consider the alternative processes and how you might test your hypothesis for which one caused the B-EF relationship. 
+
+4. *2 points*: Like Question 1, show the plots of PD versus productivity for the substitution-based PD and the transformed phylogeny's PD. Again, axes should be labelled with appropriate units with an overlaid line of best fit from the linear model. 
+
+5. *1 point*: Is the PD model you generated a better fit than the models with species richness? What did you initially predict would be a better fitting model? Did the model support your predictions?
+
+5. *1 point*: How did transforming the branch lengths in the phylogenetic tree alter your model fitting results? Discuss why this phylogeny was better or worse in explaining the observed variation in above-ground biomass. 
+
+*** 
+
+This assignment is worth 10% of your final grade. 2 points of the 10 total will come from your R code's ability to execute and produce the necessary plots. 
+
+Your report should be between 500-800 words long (approximately 2 type-written pages).
+Submit your written answers to the questions above AND your R code to Canvas in your section's *Tutorial 5/6 - Biodiversity & Ecosystem Function* folder.
+
+Your code and written answers should be submitted **2pm on Monday, February 25 or Wednesday, February 28** depending on whether you are in the Monday or Wednesday tutorial section. 

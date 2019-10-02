@@ -1,0 +1,110 @@
+---
+title: "BIOL 416 R Tutorial 6 - Biodiversity-ecosystem function in plant communities pt. 2: Phylogenies"
+author: "Mairin Deith"
+output:
+  html_document:
+    highlight: zenburn
+    theme: spacelab
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
+---
+
+In this week's tutorial, we will calculate phylogenetic diversity in each sample plot of the plant community dataset introduced last week. 
+Then, we will consider how well two different measures of biodiversity - species richness, calculated last week, and phylogenetic diversity - predict the average aboveground biomass produced in the experimental plots.
+
+Like last week, we will be working with a dataset that includes annual observations of experimental plots. 
+Data include each plot's above-ground biomass and a record of which species make up its plant community.  
+The same .csv file, **BEF2.csv**, which can be downloaded from Canvas in the Tutorial 5 folder.
+
+Try to follow these steps on your own first, but don't worry if you get stuck. 
+Intermittently through the tutorial, we will go through the analysis as a class. 
+
+## Instructions
+
+### BEF analysis: Review from last week
+
+**If you did not finish last week's instructions, go back and finish those steps first!**
+
+This week picks up from last week and requires that code to be up-and-running before you can start this week's analysis. Following last week's tutorial and instruction set, you should already have code that can do the following:
+
+1. Calculate species richness and average aboveground biomass (**AAB**) for each experimental plot in the study - this requires a functional `for(...)` loop! 
+2. Plot the relationship between species richness and AAB across communities in a scatterplot.
+3. Run two linear regressions, $AAB \sim Richness$ and $AAB \sim ln(Richness)$, and compare their results using summary statistics from the model object. 
+
+### BEF analysis: Phylogenetic diversity
+
+Last week we investigated whether species richness was a significant predictor of a plant's community above-ground biomass production. 
+This week, we are considering a different facet of biodiversity: **phylogenetic diversity, PD**. 
+Specifically, we want to see if PD is a *better* predictor of biomass production than species richness. 
+
+If you need a review of PD, see Tutorial 3. 
+
+Before starting the analysis, think about this question:
+
+<center>
+**Why would PD be a better or worse measure of biodiversity when we consider the *Biodiversity-Ecosystem Function* relationship?**
+</center>
+
+To do this, we will:
+
+   a) Calculate phylogenetic diversity in each community using a phylogeny comprised of genetic changes between lineages
+   b) Add these results to our table of species richness and AAB in each plot from last week
+   c) Run a linear regression of $AAB \sim PD$ 
+   d) Compare the linear regression of $AAB \sim PD$ with those from last week, $AAB \sim Richness$ and $AAB \sim ln(Richness)$ using outputs from the linear regression
+   e) Re-calculate PD after calibrating the phylogenetic tree to represent chronological time
+
+### BEF analysis: Step-by-step
+
+1. Load the `ape` or `picante` library into R. Re-use your code from Tutorial 3 (Introduction to Phylogenetic Diversity in R) if you're stuck. 
+
+2. Along with the data frame and code from last week, make sure you load the phylogenetic tree, `phylogeny.phy`. 
+This phylogenetic tree does not measure time like the `owls.tre` phylogeny we looked at in Tutorial 3. 
+It is not an ultrametric tree (i.e. a tree in which the distances from the root to every branch tip are equal). 
+Instead, this phylogenetic tree measures evolutionary divergence of lineages through genetic substitutions of base pairs in chloroplast genes.
+
+<center>
+**How might our analysis of PD change knowing that the genes used to construct the phylogeny are non-nuclear?**
+</center>
+
+3. Plot the phylogenetic tree. 
+Do you notice anything odd about it?
+
+4. We're going to start by calculating only PD for the `X2` plot.  
+Subset the data in the same way as last week to create a table of only `X2` observations. 
+
+5. Create a phylogenetic tree that only includes species that were found in `X2` **and the OUTGROUP** species! 
+Review the code from Tutorial 3 if you are stuck; we have already written code that can do this for us. 
+The species to include in the phylogenetic tree are those which were observed in the first year of observations.
+
+<center>
+**Why do we need to include an OUTGROUP species? Hint: what would a phylogenetic tree for a 1-species community look like?**
+</center>
+
+6. Calculate PD from this phylogenetic tree of a plot's species and the outgroup. 
+
+7. Repeat this for each plot. 
+You can now either modify your existing `for(...)` loop from last week, or you can write a new `for(...)` loop just to create phylogenetic trees and calculate PD for each plot one-at-a-time. 
+
+8. Add the PD calculations to the results data frame that we used to store species richness and AAB from last week's code. 
+
+9. Create and run a linear model that predicts AAB as a function of PD in each plot. 
+    
+10. Plot the relationship between PD and AAB with a scatterplot and overlay the linear regression created in Step 9. 
+
+11. Interpret this relationships and compare the PD results with those from the linear regression of AAB against species richness.
+How do the coefficients and intercepts compare between the linear models of species richness and PD? 
+Using model outputs, which description of biodiversity (SR, ln(SR), or PD) best predicts AAB?
+
+12. For your assignment, you will also need to create a new phylogenetic tree. 
+The phylogenetic tree is based on the number of genetic substitutions in a few selected genes. 
+Use the `chronoMPL()` and save its results to a new phylogenetic tree.
+
+14. Repeat Steps 3-11 with the new phylogenetic tree, and compare which measure of phylogenetic distance - time or substitutions - is a better predictor of AAB. 
+
+15. Write up your observations to answer the questions posted on Canvas in the Tutorial 6 - Biodiversity & Ecosystem Function pt 2 folder. Instructions are on the last slide of the [BIOL416 T5.pdf](https://canvas.ubc.ca/courses/18228/pages/tutorial-5-biodiversity-and-ecosystem-function?module_item_id=1032074)

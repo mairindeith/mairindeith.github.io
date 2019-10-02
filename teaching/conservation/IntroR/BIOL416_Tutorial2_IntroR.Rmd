@@ -1,0 +1,623 @@
+---
+title: "BIOL 416 R Tutorial 1 - Introduction to R"
+author: "Mairin Deith"
+output:
+  html_document:
+    highlight: zenburn
+    theme: spacelab
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+  word_document:
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
+# Preface
+
+These tutorials were developed to teach high-level undergraduate students the fundamentals of working in R and R Studio.
+Instructions have been modified from Dr. Steven Kembel's ["Biodiversity analysis in R" walkthrough](http://kembellab.ca/r-workshop/biodivR/SK_Biodiversity_R.html) to reflect the learning objectives of BIOL 416 at the University of British Columbia. 
+
+# Tutorial 1
+January 14 & 16, 2019
+
+## Prep
+
+Students should download the example iris.csv file from Canvas - this will be used to read in with `read.csv()`. 
+
+## Working in RStudio and R
+
+Quick notes:
+
+- the console communicates with the computer directly
+   - For example: `> 1+1` does the math for you
+- workflow between the script pane and the console is possible with Ctrl-Enter (Windows/Linux) or Cmd-Enter (MacOS)
+- comments, lines starting with `#` are ignored by the computer and can keep track of notes for yourself or other people that might look at your code
+   - For example, what lines of code do, why you use certain functions, etc. 
+
+## Objects
+
+**Note: this does not currently include any introduction to lists, this may be necessary depending on how much understanding of lists is required to use the `picante` package and phylogenies in R.**
+
+### 0-dimensional objects (single variables)
+
+The simplest objects in R are single values, or variables. 
+
+You assign a value to an object using `<-` notation. 
+For example, to create a variable called `x` that is equal to 5:
+```{r zerodim.x}
+x <- 5
+```
+
+A 0-dimensional object contains a single datum - a number, string of text, logical TRUE or FALSE values, or other types. We'll explore each of these later. 
+
+You can name these objects whatever you want, but be careful: capitalization matters and you can't put spaces in the names.
+
+It's generally a good idea to give the objects names that mean something to you:
+```{r zerodim.species}
+species.name <- "Homo sapiens"
+am.i.human <- TRUE
+number.of.legs <- 2
+```
+
+Once you create an object, you can see what value it holds by calling it:
+```{r}
+x
+species.name
+```
+You can also re-write a variable by re-assigning a value to it:
+```{r}
+x <- "new x"
+x
+```
+
+### 1-dimensional objects (vectors)
+It is also possible to make objects that have more than one value in them. 
+
+Vectors are objects that contain multiple single datum, all in a row. 
+It's the same as vectors in matrix mathematics - a one-dimensional row of values. 
+
+To make this vector: $v = \begin{pmatrix} 0 & 3 & 5 & 10 & 2 \end{pmatrix}$, we would write:
+```{r}
+v <- c(0, 3, 5, 10, 2)
+v
+```
+The `c()` here stands for combine. 
+
+There are a few ways to pull out a single value from your vector.
+First, you can use square brackets (`[X]`, where `X` is a number indicating the position where the datum you want is stored, from 1 to however many objects are in your vector).
+
+```{r}
+v[1]
+v[4]
+v[10]
+```
+Because we don't have 10 datum in the vector, trying to pull out the 10th item gives `NA`, not applicable. 
+The spot is empty. 
+
+We can also pull out multiple datum using `c()`, as before, or by using `:`. The colon indicates to R that we want values across a range; e.g. `1:3` means all numbers between 1 and 3 (`1,2,3`).
+
+```{r}
+# Using the combine function:
+v[c(1,2)]
+
+# Using a range of numbers:
+v[1:3]
+```
+
+Another way to pull out datum from a vector is by naming each object in the vector, and referring to each datum by name rather than location:
+
+```{r}
+names(v) <- c("One","Two","Three","Four","Five")
+# Now v has names attached to it
+v["One"]
+```
+
+### An aside on data classes
+R uses three main types of classes:
+
+- Numeric (numbers)
+- Strings (text or individual characters, denoted by including `" "` around the text)
+- Logical (also called Boolean, this class of data is a binary TRUE or FALSE value)
+
+In a vector, all of the data have to be of the same type (numbers, text strings, TRUE/FALSE) or else R will convert each datum to be some universal type. 
+
+
+```{r}
+bad.v <- c(0, "twelve", TRUE)
+bad.v
+```
+Notice that now R sees all of these as text strings - you can tell by the `""`.
+
+Let's try another example:
+```{r}
+another.bad.v <- c(0, TRUE, FALSE)
+another.bad.v
+```
+In this case, R transformed the `TRUE` and `FALSE` values into 0 and 1. This is because it is forcing the data to be of the same class. 
+
+
+### 2-dimensional objects (matrices and dataframes)
+
+Most of the data that we're used to looking at comes in the form of a table - the sort of data you would enter into a spreadsheet such that you have observations in rows and attributes of those observations in columns. 
+Here's an example of a 2D data-set that comes automatically with R - this is from the pre-loaded data-set called `iris`:
+
+```{r}
+# Ignore this for now:
+
+# Load in the pre-loaded iris dataset
+data('iris')
+head(iris)
+# Also demonstrate:
+# View(iris)
+```
+Notice that when we use `data()` to load in the `iris` data-set, the Environment has a new entry, `iris`.  We'll talk about what the `data()` command is in a minute - for now, just look at how the data are put together:
+
+- each column is a variable - ALL THE SAME TYPE!
+- each row is an observation
+
+`data.frame`s can hold any type of data: numbers, text, or factors. 
+Each column contains the same type of data.
+
+```{r}
+class(iris)
+```
+
+Just like in 1-dimensional vectors, we can pull individual objects out of the iris data-set using matrix notation. 
+
+```{r}
+# To pull out the object in row 1, column 1:
+### Row first, then column
+iris[1,1] # Note the "," separating the row
+
+# To pull out a single column, leave the row spot empty...
+iris[,1]
+#...or use its name with a "$"
+iris$Sepal.Length
+
+# To pull out a single row, leave the column spot empty:
+iris[1,]
+
+# Don't forget that if you want to use a subset of the total data.frame later, you can save any of these as its own variable
+sep.length <- iris$Sepal.Length
+
+# Ask: any guesses about what type of object this will be?
+class(sep.length)
+```
+
+## Modifying variables
+
+To modify numeric variables, you can re-save the variable with the same name...
+```{r}
+x <- 5
+x <- x+3
+x
+```
+...you can make the object larger by turning a single number into a list of numbers...
+```{r}
+x <- c(x,5,12,15)
+x
+```
+...you can make the object smaller by removing datum...
+```{r}
+x <- x[-3]
+x
+```
+
+...you can force R to read the object in a different way...
+```{r}
+as.data.frame(x)
+```
+...and you can also change specific values within your data:
+```{r}
+# Ask the class "How do you think I could change the first value, 8, into 10?"
+x[1] <- 10
+x
+```
+
+You can do the same with data.frames - you can add to the data.frame to make it larger...
+```{r}
+### It is a good idea to not overwrite the original data
+# Before manipulating iris, copy it
+iris.2 <- iris
+
+# By giving a new column name after a $, R creates a
+#    column called "new.column" to the iris data.frame
+iris.2$new.column <- 0
+head(iris.2)
+# Notice that the column is filled up with "0"s
+```
+...you can get rid of values within your data frame...
+```{r}
+iris.2 <- iris.2[,-6]
+iris.2 <- iris.2[-151,]
+```
+
+
+...and you can change values within the data.frame.
+```{r}
+iris.2[1,"Sepal.Length"] <- 100
+# Or change it back to the original value in iris
+iris.2[1,"Sepal.Length"] <- iris[1,"Sepal.Length"]
+```
+
+You can also create columns to reflect mathematical relationships between different objects. 
+For example, instead of our empty `new.column`, which we got rid of above when we wrote `iris.2[,-6]`, let's make a new column with `<-` that is the ratio of sepal length to petal length. 
+
+```{r}
+iris.2$length.ratio <- iris.2$Sepal.Length/iris.2$Petal.Length
+head(iris.2)
+summary(iris.2$length.ratio)
+```
+
+## Writing and reading files into/out of R 
+
+Most of the time we're working with R, we're going to be reading in a dataset from, for example, a .csv file or an Excel file. 
+
+Before we dive into an example file set, let's talk about functions...
+
+Now that we've made some changes to the `iris` data, we'd probably like to save these changes. 
+
+There are two ways to save data in R:
+
+1. Save all data in the environment as an `.Rdata` file
+2. Save as a different file type, typically a `.csv`
+
+To save your entire R session with all of the objects in your environment:
+```{r}
+# Opens a dialogue that allows you to choose where to save
+save.image("test.Rdata")
+```
+
+We can now open this data-set and return to it any time we like - we don't have to run the same commands above.
+To do this, we simply `load()` the .R data file into our new R session. 
+
+```{r}
+load("test.Rdata")
+```
+
+We can also save our modified iris data file as a csv, a common data type that is standard across multiple computers and statistical software.
+
+```{r}
+# Data source first, then file name
+write.csv(iris.2, "iris2.csv", row.names=F)
+```
+
+Similar to `load()`, we can also read csv files (and many, many other file types) into R:
+```{r}
+##### Mention that there are other file formats - including Excel spreadsheets, txt files
+iris2 <- read.csv("iris2.csv")
+head(iris2)
+# iris.2==iris2 
+```
+
+Any time you have pre-existing data you want to use in R, you will probably end up using `read.csv()` or something similar. 
+Most of the time we are interested in modifying and using our own data, not just the data already provided for us in R.
+
+## Functions
+
+To summarize the last section, you can think of objects as collections of data.
+We can load existing data, modify those data, pull individual datum out of the object using names or numbered locations (like in matrix notation), and then save those changes.
+
+We can use **functions** to modify, re-arrange, and do calculations on those data.
+
+For example, if our data are numeric we can find mean values, sums, standard deviations, the range of values the data contain, etc.
+
+The "stuff" that we can do with R's objects are contained in functions. 
+For example, the `mean()` function calculates the mean value from a series of numbers. 
+So going back to our `v` vector, we could write out by hand how to calculate the mean:
+
+*Ask class to come up with equation to calculate mean - should take 10 seconds or so, but will get them thinking about math*. 
+
+```{r}
+mean.of.v <- (v[1] + v[2] + v[3] + v[4] + v[5])/5
+mean.of.v
+```
+
+This is easier with functions:
+
+```{r}
+mean.of.v.easier <- sum(v)/length(v)
+
+mean.of.v.easiest <- mean(v)
+```
+
+Functions are simply pre-written code chunks that take inputs, which we call **Arguments**.  
+For example, when we used the `mean(v)` command, we told R to calculate the mean value of the data contained in the vector `v`. 
+
+You can learn more about functions by looking at their help files with `?mean()` or by searching for the  function name in lower right panel.
+
+*Demonstrate looking at the help file and searching for help with `?`*
+
+```
+# From the help file:
+mean(x, ...)
+
+## Default S3 method:
+mean(x, trim = 0, na.rm = FALSE, ...)
+```
+
+In the same way, we used a function called `data()` to load the iris data-set.
+`data('iris')` tells R that we want to load up a data-set with the name 'iris'. 
+
+
+## Reading and writing data
+- head()
+- summary()
+- View()
+
+In R, we can use different functions to load up our own personal data-sets - but we'll get into those later.
+For the moment, let's return to the iris data set.
+Before working with a data set, it's a good idea to examine it. 
+
+Here are a few ways you can examine objects in R, whether they be variables, vectors, data frames, or matrices.
+
+```{r}
+##### Instead of reading in the data here, instead let's load the iris file from a .csv
+##### Brief demo with getwd()
+head(v)
+head(iris)
+# View(iris)
+summary(iris)
+```
+
+## R's true power: plotting and statistics
+
+Now that we know what `iris` looks like, let's use these data to make some figures and perform some simple statistics.
+
+There are many ways to create plots - check out the [R Base Graphics Cheatsheet](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf) for a full list of the types of plots that can be made with R.
+
+### Histograms
+
+Let's start with something simple - a histogram of `Sepal.Length`?
+
+We need to first tell R where to find the data we want to plot - we want to tell R that it can find a column of data called `Sepal.Length` inside of the `iris` data-frame. 
+Take a minute to recall how we can do this - how do we tell R where to find our `Sepal.Length` data?
+
+```{r}
+# There are two ways we can do this
+## Because the iris data has columns with names, we can use the name of the column we want 
+iris$Sepal.Length
+## We can always use numbers-based indexing as well
+iris[,1]
+
+# To make the plot:
+hist(iris$Sepal.Length)
+```
+
+Easy, wasn't it?
+But it isn't very pretty - what could we change?
+
+When we make modifications to our plot, we pass extra arguments. In the original command, `hist(iris$Sepal.Length)`, the only argument we gave it was the data to plot.
+
+Take a look at what other arguments are available with `?hist()`:
+```{r}
+?hist()
+
+# Change the title, NOTICE THAT WE USE COMMAS AND ARGUMENT NAMES!!!
+hist(x = iris$Sepal.Length, main = "Observed frequency of sepal length")
+```
+```{r}
+hist(x = iris$Sepal.Length, main = "Observed frequency of sepal length", breaks = 20)
+```
+```{r}
+hist(iris$Sepal.Length, 
+     main = "Observed frequency of sepal length", 
+     breaks = 20, 
+     xlab = "Sepal Length (cm)")
+```
+
+### Scatterplot
+
+What about a more complicated type of plot next?
+
+Let's try an x-y/scatter plot:
+
+```{r}
+?plot()
+
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length)
+```
+
+Take five minutes to change the main title and the X and Y axes' titles. 
+
+```{r}
+# Output should look something like this
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = "Iris sepal and petal dimensions",
+     ylab = "Petal length (cm)",
+     xlab = "Sepal length (cm)")
+```
+
+We can also goof around with colors and point types:
+```{r}
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = "Iris sepal and petal dimensions",
+     ylab = "Petal length (cm)",
+     xlab = "Sepal length (cm)",
+     col = iris$Species)
+#     pch = 19)
+
+# And we can add a legend:
+legend(x = 4.2,
+       y = 7, 
+       legend = unique(iris$Species),
+       fill = c('black','red','green'))
+```
+
+### Saving plots
+
+Plots that you create in R can be saved in one of two ways: 
+
+1. Saving in the `Plots` tab in the lower right panel
+2. Saving directly in the code - most useful if you're going to be recreating the plots a bunch
+
+*Quickly demonstrate how to save plots using the GUI with the Plots tab*.
+
+```{r}
+# Saving plots with code:
+## For example, to save a .png:
+png("iris_scatterplot.png")
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = "Iris sepal and petal dimensions",
+     ylab = "Petal length (cm)",
+     xlab = "Sepal length (cm)",
+     col = iris$Species,
+     pch = 19)
+dev.off()
+```
+
+This uses two new functions: 
+
+- `png()` tells R to prepare a .png file with the name you provide
+- then, running `iris.scatterplot` prints out the plot within that file
+- finally, `dev.off()` closes the file and saves it
+
+You can also save to other formats: 
+```{r}
+pdf("iris_scatterplot.pdf")
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = "Iris sepal and petal dimensions",
+     ylab = "Petal length (cm)",
+     xlab = "Sepal length (cm)",
+     col = iris$Species,
+     pch = 19)
+dev.off()
+
+# Or pass arguments about the plot itself, like the size, resolution, etc.
+png("iris_scatterplot_smaller.png", width = 200, height = 200)
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = "Iris sepal and petal dimensions",
+     ylab = "Petal length (cm)",
+     xlab = "Sepal length (cm)",
+     col = iris$Species,
+     pch = 19)
+dev.off()
+```
+
+*Get the students to make a totally new type of plot - `boxplot()` - and save it to their computer. Provide only a sample plot and the name of the `boxplot()` function*. 
+
+```{r}
+?boxplot()
+
+boxplot(iris$Sepal.Length~iris$Species, fill=iris$Species,
+        main = "Boxplot of sepal length by species",
+        ylab = "Sepal length (cm)",
+        xlab = "Species",
+        ylim = c(0,9)
+)
+```
+
+### Intro to statistics - linear regression
+
+The final thing that R is particularly good at besides plotting data performing statistics on those data. 
+
+Let's start with something really simple - what if we want to know how correlated sepal length and petal length are in these three species of iris?
+
+*Ask class if anyone knows what statistical test could be used here*. 
+
+The tool that we want is called linear regression using a new function, `lm()`.
+
+`lm()` stands for linear model - this function fits a linear regression between two variables. 
+Essentially, linear regression is used to calculate how closely correlated one variable is to another.
+
+The linear part refers to the fact that we are calculating a straight-line relationship between these two, just like in the classic linear equation:
+$$ y = mx+b$$
+
+If our $x$ is sepal length and our $y$ is petal length, we want to create an equation that we can use to predict petal length based on some observed sepal length. 
+
+In other words, we're asking "when observed sepal length increases, how much of an increase in petal length should we expect?"
+We probably also want to know if there is a statistically significant relationship between the two, or if the trend we see in this plot could arise from random noise in our data.
+
+Linear regression finds the values for $m$, the slope of the relationship, and $b$, the y-intercept of the line, that best predict petal length from sepal length. 
+
+We're not going to go too much further into the statistical basis for this, so let's just dive into the code.
+
+```{r}
+# Regress petal length against sepal length
+
+?lm()
+
+# lm() looks for a formula; in other words, we need to provide an equation for what variables we expect to be dependent on the other. 
+# In this case, let's assume that we are testing the petal length as a function of sepal length. 
+
+# NOTE: new argument, data =, allows us to use just the variable names directly
+
+linear.model <- lm(Petal.Length~Sepal.Length,
+   data = iris)
+
+summary(linear.model)
+```
+ 
+Using the `summary()` command, R will spit out a bunch of information about the results of our linear regression. 
+
+For example, the coefficient for `Sepal.Length` is 1.85843 - this is the $m$ value in our classical linear equation. 
+Meanwhile, the estimate for our y-intercept is -7.10144. 
+Putting these into our equation, we can say that the best linear equation to describe the relationship between petal length and sepal length is:
+
+$$
+Petal.Length = 1.85843*Sepal.Length -7.10144
+$$
+Now that we have this line, we can put it on top of our scatter plot!
+
+```{r}
+# the abline() function can be used to directly put linear model objects onto a plot
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = "Iris sepal and petal dimensions",
+     ylab = "Petal length (cm)",
+     xlab = "Sepal length (cm)",
+     col = iris$Species)# ,
+     #pch = 19)
+abline(linear.model)
+legend(x = 4.2,
+       y = 7, 
+       legend = unique(iris$Species),
+       fill = c('black','red','green'))
+```
+
+*Brief conversation about whether the regression actually means anything given the species level differences*. 
+
+##### END HERE
+
+Finally, we probably also want to know if the relationship between these two variables is statistically significant. 
+
+```{r}
+lm.anova <- anova(linear.model)
+lm.anova
+```
+
+Finally, just like with other objects, we can pull out individual datum from this object. 
+
+For example, to save the p-value of the Sepal.Length coefficient returned by the model fitting:
+
+```{r}
+lm.anova$`Pr(>F)`
+# Note that the NA is because there is no P value for the Residuals in the model - residuals measure the extra noise that is not captured by the linear model.
+```
+
+Don't forget to save your work, and see you next week for more about R and how to use it to manipulate and work with phylogenies.
+
+## Summary
+
+- objects - 0d, 1d, 2d
+- indexing objects:
+   - with `$` if the components of the object are named or in **lists**
+   - with `[]` in all cases; if 2d, use multiple indexes with `[,]`
+- operations - math, comparisons
+- functions - more complex operations that are often pre-compiled
+- plotting - many different types, generally you pass on graphical parameters within the `plot()` call itself or, in some cases, after `plot()` has been called
+- statistics - R can perform many, many statistical analyses - many simple statistical tools are available right away in R, and many others are available through libraries (which we'll discuss next week)
+
+Summary with why to follow these steps:
+
+- species bounded regressions, explain why is this important?
+- does the relationship hold for the species individually?

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ecology &amp; Conservation on Mairin Deith</title>
+    <link>/teaching/conservation/</link>
+    <description>Recent content in Ecology &amp; Conservation on Mairin Deith</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="/teaching/conservation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/teaching/conservation/rtuts/12.12.2018.biol416.rphylotutorial_post/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/teaching/conservation/rtuts/12.12.2018.biol416.rphylotutorial_post/</guid>
+      <description>BIOL 416 R Tutorial 2 - Phylogenies in R        code{white-space: pre;} div.sourceCode { overflow-x: auto; } table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode { margin: 0; padding: 0; vertical-align: baseline; border: none; } table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; } td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; } td.sourceCode { padding-left: 5px; } pre, code { color: #cccccc; background-color: #303030; } code  span.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/teaching/conservation/rtuts/biol416_introduction_to_r_notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/teaching/conservation/rtuts/biol416_introduction_to_r_notes/</guid>
+      <description>BIOL 416 R Tutorial 1 - Introduction to R        code{white-space: pre;} div.sourceCode { overflow-x: auto; } table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode { margin: 0; padding: 0; vertical-align: baseline; border: none; } table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; } td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; } td.sourceCode { padding-left: 5px; } pre, code { color: #cccccc; background-color: #303030; } code  span.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/teaching/conservation/rtuts/biol416_tutorial5_bef_instructions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/teaching/conservation/rtuts/biol416_tutorial5_bef_instructions/</guid>
+      <description>BIOL 416 R Tutorial 5 - Biodiversity-ecosystem function in plant communities        h1 { font-size: 34px; } h1.title { font-size: 38px; } h2 { font-size: 30px; } h3 { font-size: 24px; } h4 { font-size: 18px; } h5 { font-size: 16px; } h6 { font-size: 12px; } .table th:not([align]) { text-align: left; }    .main-container { max-width: 940px; margin-left: auto; margin-right: auto; } code { color: inherit; background-color: rgba(0, 0, 0, 0.</description>
+    </item>
+    
+  </channel>
+</rss>

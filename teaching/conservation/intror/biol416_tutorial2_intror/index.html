@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="description" content="">
+<meta name="author" content="Mairin">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>BIOL 416 R Tutorial 1 - Introduction to R :: Mairin Deith</title>
+
+    
+    <link href="/css/nucleus.css?1558662433" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1558662433" rel="stylesheet">
+    <link href="/css/hybrid.css?1558662433" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1558662433" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1558662433" rel="stylesheet">
+    <link href="/css/auto-complete.css?1558662433" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1558662433" rel="stylesheet">
+    <link href="/css/theme.css?1558662433" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1558662433" rel="stylesheet">
+    
+      <link href="/css/theme-mine.css?1558662433" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1558662433"></script>
+
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/teaching/conservation/intror/biol416_tutorial2_intror/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+	<img src="/images/logo_text_tall_svg.png" alt="Logo" height="90%" width="90%">
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1558662433"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1558662433"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1558662433"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/projects/" title="Research Projects" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/projects/">
+          <b><i class='fas fa-terminal'> </i>      </b>Research Projects
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/projects/spatial_mapping/" title="Spatial Mapping of Bushmeat Hunting" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/projects/spatial_mapping/">
+          <b><i class='fas fa-layer-group'> </i>   </b>Spatial Mapping of Bushmeat Hunting
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/projects/decision_making/" title="Bayesian Decision Analysis" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/projects/decision_making/">
+          <b><i class='fas fa-project-diagram'> </i>   </b>Bayesian Decision Analysis
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/projects/simulations/" title="MSE for Sustainable Harvests" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/projects/simulations/">
+          <b><i class='fas fa-tasks'> </i>   </b>MSE for Sustainable Harvests
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/projects/simulations/redfish/" title="Canadian Atlantic Redfish" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/projects/simulations/redfish/">
+          Canadian Atlantic Redfish
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/projects/simulations/stonessheep/" title="Stone&#39;s Sheep" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/projects/simulations/stonessheep/">
+          Stone&#39;s Sheep
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/projects/simulations/shiny_pva/" title="PVA&#43;Shiny for Invasive Species Eradication" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/projects/simulations/shiny_pva/">
+          <b><i class='far fa-times-circle'> </i>   </b>PVA&#43;Shiny for Invasive Species Eradication
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/teaching/" title="Teaching" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/teaching/">
+          <b><i class='fas fa-apple-alt'> </i>   </b>Teaching
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/teaching/code_for_all/" title="Coding for the Masses" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/teaching/code_for_all/">
+          <b><i class='fab fa-python'> </i>   </b>Coding for the Masses
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/teaching/conservation/" title="Ecology &amp; Conservation" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/teaching/conservation/">
+          <b><i class='fab fa-envira'> </i>   </b>Ecology &amp; Conservation
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/beftutorial/biol416_befanalysis_assignmentinstructions.nb/" title="" class="dd-item ">
+        <a href="/teaching/conservation/beftutorial/biol416_befanalysis_assignmentinstructions.nb/">
+        
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/beftutorial/biol416_befanalysis_assignmentinstructions/" title="BIOL 416 Assignment 1" class="dd-item ">
+        <a href="/teaching/conservation/beftutorial/biol416_befanalysis_assignmentinstructions/">
+        BIOL 416 Assignment 1
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/intror/biol416_introduction_to_r_notes/" title="BIOL 416 R Tutorial 1 - Introduction to R" class="dd-item ">
+        <a href="/teaching/conservation/intror/biol416_introduction_to_r_notes/">
+        BIOL 416 R Tutorial 1 - Introduction to R
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/intror/biol416_tutorial2_intror/" title="BIOL 416 R Tutorial 1 - Introduction to R" class="dd-item active">
+        <a href="/teaching/conservation/intror/biol416_tutorial2_intror/">
+        BIOL 416 R Tutorial 1 - Introduction to R
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/12.12.2018.biol416.rphylotutorial_post/" title="BIOL 416 R Tutorial 2 - Phylogenies in R" class="dd-item ">
+        <a href="/teaching/conservation/12.12.2018.biol416.rphylotutorial_post/">
+        BIOL 416 R Tutorial 2 - Phylogenies in R
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/phylo/12.12.2018.biol416.rphylotutorial/" title="BIOL 416 R Tutorial 2 - Phylogenies in R" class="dd-item ">
+        <a href="/teaching/conservation/phylo/12.12.2018.biol416.rphylotutorial/">
+        BIOL 416 R Tutorial 2 - Phylogenies in R
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/phylo/12.12.2018.biol416.rphylotutorial_post/" title="BIOL 416 R Tutorial 2 - Phylogenies in R" class="dd-item ">
+        <a href="/teaching/conservation/phylo/12.12.2018.biol416.rphylotutorial_post/">
+        BIOL 416 R Tutorial 2 - Phylogenies in R
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/phylo/biol416_tutorial3_phylogeneticsr/" title="BIOL 416 R Tutorial 2 - Phylogenies in R" class="dd-item ">
+        <a href="/teaching/conservation/phylo/biol416_tutorial3_phylogeneticsr/">
+        BIOL 416 R Tutorial 2 - Phylogenies in R
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/beftutorial/bef_lessonplan/" title="BIOL 416 R Tutorial 5 - Biodiversity-ecosystem function in plant communities" class="dd-item ">
+        <a href="/teaching/conservation/beftutorial/bef_lessonplan/">
+        BIOL 416 R Tutorial 5 - Biodiversity-ecosystem function in plant communities
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/beftutorial/biol416_tutorial5_bef_instructions/" title="BIOL 416 R Tutorial 5 - Biodiversity-ecosystem function in plant communities" class="dd-item ">
+        <a href="/teaching/conservation/beftutorial/biol416_tutorial5_bef_instructions/">
+        BIOL 416 R Tutorial 5 - Biodiversity-ecosystem function in plant communities
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/beftutorial/phylo/biol416_bef_phylogeneticslessonplan/" title="BIOL 416 R Tutorial 5 - Biodiversity-ecosystem function in plant communities" class="dd-item ">
+        <a href="/teaching/conservation/beftutorial/phylo/biol416_bef_phylogeneticslessonplan/">
+        BIOL 416 R Tutorial 5 - Biodiversity-ecosystem function in plant communities
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/beftutorial/phylo/biol416_tutorial6_befpd_instructions/" title="BIOL 416 R Tutorial 6 - Biodiversity-ecosystem function in plant communities pt. 2: Phylogenies" class="dd-item ">
+        <a href="/teaching/conservation/beftutorial/phylo/biol416_tutorial6_befpd_instructions/">
+        BIOL 416 R Tutorial 6 - Biodiversity-ecosystem function in plant communities pt. 2: Phylogenies
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/beftutorial/phylo/biol416_tutorial6_befpd_instructions_x/" title="BIOL 416 R Tutorial 6 - Biodiversity-ecosystem function in plant communities pt. 2: Phylogenies" class="dd-item ">
+        <a href="/teaching/conservation/beftutorial/phylo/biol416_tutorial6_befpd_instructions_x/">
+        BIOL 416 R Tutorial 6 - Biodiversity-ecosystem function in plant communities pt. 2: Phylogenies
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/teaching/conservation/beftutorial/phylo/13.02.2019_assignmentannouncement/" title="Common bugs" class="dd-item ">
+        <a href="/teaching/conservation/beftutorial/phylo/13.02.2019_assignmentannouncement/">
+        Common bugs
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/post/" title="Posts &amp; Tutorials" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/post/">
+          <b><i class='far fa-newspaper'> </i>   </b>Posts &amp; Tutorials
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+             
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/post/2015-07-23-r-rmarkdown/" title="Hello R Markdown" class="dd-item ">
+        <a href="/post/2015-07-23-r-rmarkdown/">
+        Hello R Markdown
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+             
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/about/" title="About" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/about/">
+          <b><i class='far fa-smile'> </i>   </b>About
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/about/_index0/" title="" class="dd-item ">
+        <a href="/about/_index0/">
+        
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="mailto:mairin.deith@gmail.com"><i class='fas fa-fw fa-envelope'></i> Email</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/mairindeith"><i class='fab fa-fw fa-github'></i> Github</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://twitter.com/sapiensimulator"><i class='fab fa-twitter'></i> Twitter</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <center>
+    <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'></a> > <a href='/teaching/'>Teaching</a> > <a href='/teaching/conservation/'>Ecology & Conservation</a> > BIOL 416 R Tutorial 1 - Introduction to R
+          
+         
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              BIOL 416 R Tutorial 1 - Introduction to R
+            </h1>
+          
+
+        
+
+
+
+
+
+
+<div id="preface" class="section level1">
+<h1>Preface</h1>
+<p>These tutorials were developed to teach high-level undergraduate students the fundamentals of working in R and R Studio.
+Instructions have been modified from Dr. Steven Kembel’s <a href="http://kembellab.ca/r-workshop/biodivR/SK_Biodiversity_R.html">“Biodiversity analysis in R” walkthrough</a> to reflect the learning objectives of BIOL 416 at the University of British Columbia.</p>
+</div>
+<div id="tutorial-1" class="section level1">
+<h1>Tutorial 1</h1>
+<p>January 14 &amp; 16, 2019</p>
+<div id="prep" class="section level2">
+<h2>Prep</h2>
+<p>Students should download the example iris.csv file from Canvas - this will be used to read in with <code>read.csv()</code>.</p>
+</div>
+<div id="working-in-rstudio-and-r" class="section level2">
+<h2>Working in RStudio and R</h2>
+<p>Quick notes:</p>
+<ul>
+<li>the console communicates with the computer directly
+<ul>
+<li>For example: <code>&gt; 1+1</code> does the math for you</li>
+</ul></li>
+<li>workflow between the script pane and the console is possible with Ctrl-Enter (Windows/Linux) or Cmd-Enter (MacOS)</li>
+<li>comments, lines starting with <code>#</code> are ignored by the computer and can keep track of notes for yourself or other people that might look at your code
+<ul>
+<li>For example, what lines of code do, why you use certain functions, etc.</li>
+</ul></li>
+</ul>
+</div>
+<div id="objects" class="section level2">
+<h2>Objects</h2>
+<p><strong>Note: this does not currently include any introduction to lists, this may be necessary depending on how much understanding of lists is required to use the <code>picante</code> package and phylogenies in R.</strong></p>
+<div id="dimensional-objects-single-variables" class="section level3">
+<h3>0-dimensional objects (single variables)</h3>
+<p>The simplest objects in R are single values, or variables.</p>
+<p>You assign a value to an object using <code>&lt;-</code> notation.
+For example, to create a variable called <code>x</code> that is equal to 5:</p>
+<pre class="r"><code>x &lt;- 5</code></pre>
+<p>A 0-dimensional object contains a single datum - a number, string of text, logical TRUE or FALSE values, or other types. We’ll explore each of these later.</p>
+<p>You can name these objects whatever you want, but be careful: capitalization matters and you can’t put spaces in the names.</p>
+<p>It’s generally a good idea to give the objects names that mean something to you:</p>
+<pre class="r"><code>species.name &lt;- &quot;Homo sapiens&quot;
+am.i.human &lt;- TRUE
+number.of.legs &lt;- 2</code></pre>
+<p>Once you create an object, you can see what value it holds by calling it:</p>
+<pre class="r"><code>x</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>species.name</code></pre>
+<pre><code>## [1] &quot;Homo sapiens&quot;</code></pre>
+<p>You can also re-write a variable by re-assigning a value to it:</p>
+<pre class="r"><code>x &lt;- &quot;new x&quot;
+x</code></pre>
+<pre><code>## [1] &quot;new x&quot;</code></pre>
+</div>
+<div id="dimensional-objects-vectors" class="section level3">
+<h3>1-dimensional objects (vectors)</h3>
+<p>It is also possible to make objects that have more than one value in them.</p>
+<p>Vectors are objects that contain multiple single datum, all in a row.
+It’s the same as vectors in matrix mathematics - a one-dimensional row of values.</p>
+<p>To make this vector: <span class="math inline">\(v = \begin{pmatrix} 0 &amp; 3 &amp; 5 &amp; 10 &amp; 2 \end{pmatrix}\)</span>, we would write:</p>
+<pre class="r"><code>v &lt;- c(0, 3, 5, 10, 2)
+v</code></pre>
+<pre><code>## [1]  0  3  5 10  2</code></pre>
+<p>The <code>c()</code> here stands for combine.</p>
+<p>There are a few ways to pull out a single value from your vector.
+First, you can use square brackets (<code>[X]</code>, where <code>X</code> is a number indicating the position where the datum you want is stored, from 1 to however many objects are in your vector).</p>
+<pre class="r"><code>v[1]</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>v[4]</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="r"><code>v[10]</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>Because we don’t have 10 datum in the vector, trying to pull out the 10th item gives <code>NA</code>, not applicable.
+The spot is empty.</p>
+<p>We can also pull out multiple datum using <code>c()</code>, as before, or by using <code>:</code>. The colon indicates to R that we want values across a range; e.g. <code>1:3</code> means all numbers between 1 and 3 (<code>1,2,3</code>).</p>
+<pre class="r"><code># Using the combine function:
+v[c(1,2)]</code></pre>
+<pre><code>## [1] 0 3</code></pre>
+<pre class="r"><code># Using a range of numbers:
+v[1:3]</code></pre>
+<pre><code>## [1] 0 3 5</code></pre>
+<p>Another way to pull out datum from a vector is by naming each object in the vector, and referring to each datum by name rather than location:</p>
+<pre class="r"><code>names(v) &lt;- c(&quot;One&quot;,&quot;Two&quot;,&quot;Three&quot;,&quot;Four&quot;,&quot;Five&quot;)
+# Now v has names attached to it
+v[&quot;One&quot;]</code></pre>
+<pre><code>## One 
+##   0</code></pre>
+</div>
+<div id="an-aside-on-data-classes" class="section level3">
+<h3>An aside on data classes</h3>
+<p>R uses three main types of classes:</p>
+<ul>
+<li>Numeric (numbers)</li>
+<li>Strings (text or individual characters, denoted by including <code>&quot; &quot;</code> around the text)</li>
+<li>Logical (also called Boolean, this class of data is a binary TRUE or FALSE value)</li>
+</ul>
+<p>In a vector, all of the data have to be of the same type (numbers, text strings, TRUE/FALSE) or else R will convert each datum to be some universal type.</p>
+<pre class="r"><code>bad.v &lt;- c(0, &quot;twelve&quot;, TRUE)
+bad.v</code></pre>
+<pre><code>## [1] &quot;0&quot;      &quot;twelve&quot; &quot;TRUE&quot;</code></pre>
+<p>Notice that now R sees all of these as text strings - you can tell by the <code>&quot;&quot;</code>.</p>
+<p>Let’s try another example:</p>
+<pre class="r"><code>another.bad.v &lt;- c(0, TRUE, FALSE)
+another.bad.v</code></pre>
+<pre><code>## [1] 0 1 0</code></pre>
+<p>In this case, R transformed the <code>TRUE</code> and <code>FALSE</code> values into 0 and 1. This is because it is forcing the data to be of the same class.</p>
+</div>
+<div id="dimensional-objects-matrices-and-dataframes" class="section level3">
+<h3>2-dimensional objects (matrices and dataframes)</h3>
+<p>Most of the data that we’re used to looking at comes in the form of a table - the sort of data you would enter into a spreadsheet such that you have observations in rows and attributes of those observations in columns.
+Here’s an example of a 2D data-set that comes automatically with R - this is from the pre-loaded data-set called <code>iris</code>:</p>
+<pre class="r"><code># Ignore this for now:
+
+# Load in the pre-loaded iris dataset
+data(&#39;iris&#39;)
+head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="r"><code># Also demonstrate:
+# View(iris)</code></pre>
+<p>Notice that when we use <code>data()</code> to load in the <code>iris</code> data-set, the Environment has a new entry, <code>iris</code>. We’ll talk about what the <code>data()</code> command is in a minute - for now, just look at how the data are put together:</p>
+<ul>
+<li>each column is a variable - ALL THE SAME TYPE!</li>
+<li>each row is an observation</li>
+</ul>
+<p><code>data.frame</code>s can hold any type of data: numbers, text, or factors.
+Each column contains the same type of data.</p>
+<pre class="r"><code>class(iris)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<p>Just like in 1-dimensional vectors, we can pull individual objects out of the iris data-set using matrix notation.</p>
+<pre class="r"><code># To pull out the object in row 1, column 1:
+### Row first, then column
+iris[1,1] # Note the &quot;,&quot; separating the row</code></pre>
+<pre><code>## [1] 5.1</code></pre>
+<pre class="r"><code># To pull out a single column, leave the row spot empty...
+iris[,1]</code></pre>
+<pre><code>##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4
+##  [18] 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5
+##  [35] 4.9 5.0 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0
+##  [52] 6.4 6.9 5.5 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8
+##  [69] 6.2 5.6 5.9 6.1 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4
+##  [86] 6.0 6.7 6.3 5.6 5.5 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8
+## [103] 7.1 6.3 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7
+## [120] 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7
+## [137] 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8 6.7 6.7 6.3 6.5 6.2 5.9</code></pre>
+<pre class="r"><code>#...or use its name with a &quot;$&quot;
+iris$Sepal.Length</code></pre>
+<pre><code>##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4
+##  [18] 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5
+##  [35] 4.9 5.0 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0
+##  [52] 6.4 6.9 5.5 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8
+##  [69] 6.2 5.6 5.9 6.1 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4
+##  [86] 6.0 6.7 6.3 5.6 5.5 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8
+## [103] 7.1 6.3 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7
+## [120] 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7
+## [137] 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8 6.7 6.7 6.3 6.5 6.2 5.9</code></pre>
+<pre class="r"><code># To pull out a single row, leave the column spot empty:
+iris[1,]</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa</code></pre>
+<pre class="r"><code># Don&#39;t forget that if you want to use a subset of the total data.frame later, you can save any of these as its own variable
+sep.length &lt;- iris$Sepal.Length
+
+# Ask: any guesses about what type of object this will be?
+class(sep.length)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+</div>
+</div>
+<div id="modifying-variables" class="section level2">
+<h2>Modifying variables</h2>
+<p>To modify numeric variables, you can re-save the variable with the same name…</p>
+<pre class="r"><code>x &lt;- 5
+x &lt;- x+3
+x</code></pre>
+<pre><code>## [1] 8</code></pre>
+<p>…you can make the object larger by turning a single number into a list of numbers…</p>
+<pre class="r"><code>x &lt;- c(x,5,12,15)
+x</code></pre>
+<pre><code>## [1]  8  5 12 15</code></pre>
+<p>…you can make the object smaller by removing datum…</p>
+<pre class="r"><code>x &lt;- x[-3]
+x</code></pre>
+<pre><code>## [1]  8  5 15</code></pre>
+<p>…you can force R to read the object in a different way…</p>
+<pre class="r"><code>as.data.frame(x)</code></pre>
+<pre><code>##    x
+## 1  8
+## 2  5
+## 3 15</code></pre>
+<p>…and you can also change specific values within your data:</p>
+<pre class="r"><code># Ask the class &quot;How do you think I could change the first value, 8, into 10?&quot;
+x[1] &lt;- 10
+x</code></pre>
+<pre><code>## [1] 10  5 15</code></pre>
+<p>You can do the same with data.frames - you can add to the data.frame to make it larger…</p>
+<pre class="r"><code>### It is a good idea to not overwrite the original data
+# Before manipulating iris, copy it
+iris.2 &lt;- iris
+
+# By giving a new column name after a $, R creates a
+#    column called &quot;new.column&quot; to the iris data.frame
+iris.2$new.column &lt;- 0
+head(iris.2)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species new.column
+## 1          5.1         3.5          1.4         0.2  setosa          0
+## 2          4.9         3.0          1.4         0.2  setosa          0
+## 3          4.7         3.2          1.3         0.2  setosa          0
+## 4          4.6         3.1          1.5         0.2  setosa          0
+## 5          5.0         3.6          1.4         0.2  setosa          0
+## 6          5.4         3.9          1.7         0.4  setosa          0</code></pre>
+<pre class="r"><code># Notice that the column is filled up with &quot;0&quot;s</code></pre>
+<p>…you can get rid of values within your data frame…</p>
+<pre class="r"><code>iris.2 &lt;- iris.2[,-6]
+iris.2 &lt;- iris.2[-151,]</code></pre>
+<p>…and you can change values within the data.frame.</p>
+<pre class="r"><code>iris.2[1,&quot;Sepal.Length&quot;] &lt;- 100
+# Or change it back to the original value in iris
+iris.2[1,&quot;Sepal.Length&quot;] &lt;- iris[1,&quot;Sepal.Length&quot;]</code></pre>
+<p>You can also create columns to reflect mathematical relationships between different objects.
+For example, instead of our empty <code>new.column</code>, which we got rid of above when we wrote <code>iris.2[,-6]</code>, let’s make a new column with <code>&lt;-</code> that is the ratio of sepal length to petal length.</p>
+<pre class="r"><code>iris.2$length.ratio &lt;- iris.2$Sepal.Length/iris.2$Petal.Length
+head(iris.2)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species length.ratio
+## 1          5.1         3.5          1.4         0.2  setosa     3.642857
+## 2          4.9         3.0          1.4         0.2  setosa     3.500000
+## 3          4.7         3.2          1.3         0.2  setosa     3.615385
+## 4          4.6         3.1          1.5         0.2  setosa     3.066667
+## 5          5.0         3.6          1.4         0.2  setosa     3.571429
+## 6          5.4         3.9          1.7         0.4  setosa     3.176471</code></pre>
+<pre class="r"><code>summary(iris.2$length.ratio)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.050   1.230   1.411   2.018   3.176   4.833</code></pre>
+</div>
+<div id="writing-and-reading-files-intoout-of-r" class="section level2">
+<h2>Writing and reading files into/out of R</h2>
+<p>Most of the time we’re working with R, we’re going to be reading in a dataset from, for example, a .csv file or an Excel file.</p>
+<p>Before we dive into an example file set, let’s talk about functions…</p>
+<p>Now that we’ve made some changes to the <code>iris</code> data, we’d probably like to save these changes.</p>
+<p>There are two ways to save data in R:</p>
+<ol style="list-style-type: decimal">
+<li>Save all data in the environment as an <code>.Rdata</code> file</li>
+<li>Save as a different file type, typically a <code>.csv</code></li>
+</ol>
+<p>To save your entire R session with all of the objects in your environment:</p>
+<pre class="r"><code># Opens a dialogue that allows you to choose where to save
+save.image(&quot;test.Rdata&quot;)</code></pre>
+<p>We can now open this data-set and return to it any time we like - we don’t have to run the same commands above.
+To do this, we simply <code>load()</code> the .R data file into our new R session.</p>
+<pre class="r"><code>load(&quot;test.Rdata&quot;)</code></pre>
+<p>We can also save our modified iris data file as a csv, a common data type that is standard across multiple computers and statistical software.</p>
+<pre class="r"><code># Data source first, then file name
+write.csv(iris.2, &quot;iris2.csv&quot;, row.names=F)</code></pre>
+<p>Similar to <code>load()</code>, we can also read csv files (and many, many other file types) into R:</p>
+<pre class="r"><code>##### Mention that there are other file formats - including Excel spreadsheets, txt files
+iris2 &lt;- read.csv(&quot;iris2.csv&quot;)
+head(iris2)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species length.ratio
+## 1          5.1         3.5          1.4         0.2  setosa     3.642857
+## 2          4.9         3.0          1.4         0.2  setosa     3.500000
+## 3          4.7         3.2          1.3         0.2  setosa     3.615385
+## 4          4.6         3.1          1.5         0.2  setosa     3.066667
+## 5          5.0         3.6          1.4         0.2  setosa     3.571429
+## 6          5.4         3.9          1.7         0.4  setosa     3.176471</code></pre>
+<pre class="r"><code># iris.2==iris2 </code></pre>
+<p>Any time you have pre-existing data you want to use in R, you will probably end up using <code>read.csv()</code> or something similar.
+Most of the time we are interested in modifying and using our own data, not just the data already provided for us in R.</p>
+</div>
+<div id="functions" class="section level2">
+<h2>Functions</h2>
+<p>To summarize the last section, you can think of objects as collections of data.
+We can load existing data, modify those data, pull individual datum out of the object using names or numbered locations (like in matrix notation), and then save those changes.</p>
+<p>We can use <strong>functions</strong> to modify, re-arrange, and do calculations on those data.</p>
+<p>For example, if our data are numeric we can find mean values, sums, standard deviations, the range of values the data contain, etc.</p>
+<p>The “stuff” that we can do with R’s objects are contained in functions.
+For example, the <code>mean()</code> function calculates the mean value from a series of numbers.
+So going back to our <code>v</code> vector, we could write out by hand how to calculate the mean:</p>
+<p><em>Ask class to come up with equation to calculate mean - should take 10 seconds or so, but will get them thinking about math</em>.</p>
+<pre class="r"><code>mean.of.v &lt;- (v[1] + v[2] + v[3] + v[4] + v[5])/5
+mean.of.v</code></pre>
+<pre><code>## One 
+##   4</code></pre>
+<p>This is easier with functions:</p>
+<pre class="r"><code>mean.of.v.easier &lt;- sum(v)/length(v)
+
+mean.of.v.easiest &lt;- mean(v)</code></pre>
+<p>Functions are simply pre-written code chunks that take inputs, which we call <strong>Arguments</strong>.<br />
+For example, when we used the <code>mean(v)</code> command, we told R to calculate the mean value of the data contained in the vector <code>v</code>.</p>
+<p>You can learn more about functions by looking at their help files with <code>?mean()</code> or by searching for the function name in lower right panel.</p>
+<p><em>Demonstrate looking at the help file and searching for help with <code>?</code></em></p>
+<pre><code># From the help file:
+mean(x, ...)
+
+## Default S3 method:
+mean(x, trim = 0, na.rm = FALSE, ...)</code></pre>
+<p>In the same way, we used a function called <code>data()</code> to load the iris data-set.
+<code>data('iris')</code> tells R that we want to load up a data-set with the name ‘iris’.</p>
+</div>
+<div id="reading-and-writing-data" class="section level2">
+<h2>Reading and writing data</h2>
+<ul>
+<li>head()</li>
+<li>summary()</li>
+<li>View()</li>
+</ul>
+<p>In R, we can use different functions to load up our own personal data-sets - but we’ll get into those later.
+For the moment, let’s return to the iris data set.
+Before working with a data set, it’s a good idea to examine it.</p>
+<p>Here are a few ways you can examine objects in R, whether they be variables, vectors, data frames, or matrices.</p>
+<pre class="r"><code>##### Instead of reading in the data here, instead let&#39;s load the iris file from a .csv
+##### Brief demo with getwd()
+head(v)</code></pre>
+<pre><code>##   One   Two Three  Four  Five 
+##     0     3     5    10     2</code></pre>
+<pre class="r"><code>head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="r"><code># View(iris)
+summary(iris)</code></pre>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre>
+</div>
+<div id="rs-true-power-plotting-and-statistics" class="section level2">
+<h2>R’s true power: plotting and statistics</h2>
+<p>Now that we know what <code>iris</code> looks like, let’s use these data to make some figures and perform some simple statistics.</p>
+<p>There are many ways to create plots - check out the <a href="http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf">R Base Graphics Cheatsheet</a> for a full list of the types of plots that can be made with R.</p>
+<div id="histograms" class="section level3">
+<h3>Histograms</h3>
+<p>Let’s start with something simple - a histogram of <code>Sepal.Length</code>?</p>
+<p>We need to first tell R where to find the data we want to plot - we want to tell R that it can find a column of data called <code>Sepal.Length</code> inside of the <code>iris</code> data-frame.
+Take a minute to recall how we can do this - how do we tell R where to find our <code>Sepal.Length</code> data?</p>
+<pre class="r"><code># There are two ways we can do this
+## Because the iris data has columns with names, we can use the name of the column we want 
+iris$Sepal.Length</code></pre>
+<pre><code>##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4
+##  [18] 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5
+##  [35] 4.9 5.0 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0
+##  [52] 6.4 6.9 5.5 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8
+##  [69] 6.2 5.6 5.9 6.1 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4
+##  [86] 6.0 6.7 6.3 5.6 5.5 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8
+## [103] 7.1 6.3 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7
+## [120] 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7
+## [137] 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8 6.7 6.7 6.3 6.5 6.2 5.9</code></pre>
+<pre class="r"><code>## We can always use numbers-based indexing as well
+iris[,1]</code></pre>
+<pre><code>##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4
+##  [18] 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5
+##  [35] 4.9 5.0 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0
+##  [52] 6.4 6.9 5.5 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8
+##  [69] 6.2 5.6 5.9 6.1 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4
+##  [86] 6.0 6.7 6.3 5.6 5.5 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8
+## [103] 7.1 6.3 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7
+## [120] 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7
+## [137] 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8 6.7 6.7 6.3 6.5 6.2 5.9</code></pre>
+<pre class="r"><code># To make the plot:
+hist(iris$Sepal.Length)</code></pre>
+<p><img src="/teaching/conservation/IntroR/BIOL416_Tutorial2_IntroR_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Easy, wasn’t it?
+But it isn’t very pretty - what could we change?</p>
+<p>When we make modifications to our plot, we pass extra arguments. In the original command, <code>hist(iris$Sepal.Length)</code>, the only argument we gave it was the data to plot.</p>
+<p>Take a look at what other arguments are available with <code>?hist()</code>:</p>
+<pre class="r"><code>?hist()
+
+# Change the title, NOTICE THAT WE USE COMMAS AND ARGUMENT NAMES!!!
+hist(x = iris$Sepal.Length, main = &quot;Observed frequency of sepal length&quot;)</code></pre>
+<p><img src="/teaching/conservation/IntroR/BIOL416_Tutorial2_IntroR_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<pre class="r"><code>hist(x = iris$Sepal.Length, main = &quot;Observed frequency of sepal length&quot;, breaks = 20)</code></pre>
+<p><img src="/teaching/conservation/IntroR/BIOL416_Tutorial2_IntroR_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<pre class="r"><code>hist(iris$Sepal.Length, 
+     main = &quot;Observed frequency of sepal length&quot;, 
+     breaks = 20, 
+     xlab = &quot;Sepal Length (cm)&quot;)</code></pre>
+<p><img src="/teaching/conservation/IntroR/BIOL416_Tutorial2_IntroR_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+</div>
+<div id="scatterplot" class="section level3">
+<h3>Scatterplot</h3>
+<p>What about a more complicated type of plot next?</p>
+<p>Let’s try an x-y/scatter plot:</p>
+<pre class="r"><code>?plot()
+
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length)</code></pre>
+<p><img src="/teaching/conservation/IntroR/BIOL416_Tutorial2_IntroR_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>Take five minutes to change the main title and the X and Y axes’ titles.</p>
+<pre class="r"><code># Output should look something like this
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = &quot;Iris sepal and petal dimensions&quot;,
+     ylab = &quot;Petal length (cm)&quot;,
+     xlab = &quot;Sepal length (cm)&quot;)</code></pre>
+<p><img src="/teaching/conservation/IntroR/BIOL416_Tutorial2_IntroR_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>We can also goof around with colors and point types:</p>
+<pre class="r"><code>plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = &quot;Iris sepal and petal dimensions&quot;,
+     ylab = &quot;Petal length (cm)&quot;,
+     xlab = &quot;Sepal length (cm)&quot;,
+     col = iris$Species)
+#     pch = 19)
+
+# And we can add a legend:
+legend(x = 4.2,
+       y = 7, 
+       legend = unique(iris$Species),
+       fill = c(&#39;black&#39;,&#39;red&#39;,&#39;green&#39;))</code></pre>
+<p><img src="/teaching/conservation/IntroR/BIOL416_Tutorial2_IntroR_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+</div>
+<div id="saving-plots" class="section level3">
+<h3>Saving plots</h3>
+<p>Plots that you create in R can be saved in one of two ways:</p>
+<ol style="list-style-type: decimal">
+<li>Saving in the <code>Plots</code> tab in the lower right panel</li>
+<li>Saving directly in the code - most useful if you’re going to be recreating the plots a bunch</li>
+</ol>
+<p><em>Quickly demonstrate how to save plots using the GUI with the Plots tab</em>.</p>
+<pre class="r"><code># Saving plots with code:
+## For example, to save a .png:
+png(&quot;iris_scatterplot.png&quot;)
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = &quot;Iris sepal and petal dimensions&quot;,
+     ylab = &quot;Petal length (cm)&quot;,
+     xlab = &quot;Sepal length (cm)&quot;,
+     col = iris$Species,
+     pch = 19)
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<p>This uses two new functions:</p>
+<ul>
+<li><code>png()</code> tells R to prepare a .png file with the name you provide</li>
+<li>then, running <code>iris.scatterplot</code> prints out the plot within that file</li>
+<li>finally, <code>dev.off()</code> closes the file and saves it</li>
+</ul>
+<p>You can also save to other formats:</p>
+<pre class="r"><code>pdf(&quot;iris_scatterplot.pdf&quot;)
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = &quot;Iris sepal and petal dimensions&quot;,
+     ylab = &quot;Petal length (cm)&quot;,
+     xlab = &quot;Sepal length (cm)&quot;,
+     col = iris$Species,
+     pch = 19)
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<pre class="r"><code># Or pass arguments about the plot itself, like the size, resolution, etc.
+png(&quot;iris_scatterplot_smaller.png&quot;, width = 200, height = 200)
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = &quot;Iris sepal and petal dimensions&quot;,
+     ylab = &quot;Petal length (cm)&quot;,
+     xlab = &quot;Sepal length (cm)&quot;,
+     col = iris$Species,
+     pch = 19)
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<p><em>Get the students to make a totally new type of plot - <code>boxplot()</code> - and save it to their computer. Provide only a sample plot and the name of the <code>boxplot()</code> function</em>.</p>
+<pre class="r"><code>?boxplot()
+
+boxplot(iris$Sepal.Length~iris$Species, fill=iris$Species,
+        main = &quot;Boxplot of sepal length by species&quot;,
+        ylab = &quot;Sepal length (cm)&quot;,
+        xlab = &quot;Species&quot;,
+        ylim = c(0,9)
+)</code></pre>
+<p><img src="/teaching/conservation/IntroR/BIOL416_Tutorial2_IntroR_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+</div>
+<div id="intro-to-statistics---linear-regression" class="section level3">
+<h3>Intro to statistics - linear regression</h3>
+<p>The final thing that R is particularly good at besides plotting data performing statistics on those data.</p>
+<p>Let’s start with something really simple - what if we want to know how correlated sepal length and petal length are in these three species of iris?</p>
+<p><em>Ask class if anyone knows what statistical test could be used here</em>.</p>
+<p>The tool that we want is called linear regression using a new function, <code>lm()</code>.</p>
+<p><code>lm()</code> stands for linear model - this function fits a linear regression between two variables.
+Essentially, linear regression is used to calculate how closely correlated one variable is to another.</p>
+<p>The linear part refers to the fact that we are calculating a straight-line relationship between these two, just like in the classic linear equation:
+<span class="math display">\[ y = mx+b\]</span></p>
+<p>If our <span class="math inline">\(x\)</span> is sepal length and our <span class="math inline">\(y\)</span> is petal length, we want to create an equation that we can use to predict petal length based on some observed sepal length.</p>
+<p>In other words, we’re asking “when observed sepal length increases, how much of an increase in petal length should we expect?”
+We probably also want to know if there is a statistically significant relationship between the two, or if the trend we see in this plot could arise from random noise in our data.</p>
+<p>Linear regression finds the values for <span class="math inline">\(m\)</span>, the slope of the relationship, and <span class="math inline">\(b\)</span>, the y-intercept of the line, that best predict petal length from sepal length.</p>
+<p>We’re not going to go too much further into the statistical basis for this, so let’s just dive into the code.</p>
+<pre class="r"><code># Regress petal length against sepal length
+
+?lm()
+
+# lm() looks for a formula; in other words, we need to provide an equation for what variables we expect to be dependent on the other. 
+# In this case, let&#39;s assume that we are testing the petal length as a function of sepal length. 
+
+# NOTE: new argument, data =, allows us to use just the variable names directly
+
+linear.model &lt;- lm(Petal.Length~Sepal.Length,
+   data = iris)
+
+summary(linear.model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Petal.Length ~ Sepal.Length, data = iris)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.47747 -0.59072 -0.00668  0.60484  2.49512 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -7.10144    0.50666  -14.02   &lt;2e-16 ***
+## Sepal.Length  1.85843    0.08586   21.65   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.8678 on 148 degrees of freedom
+## Multiple R-squared:   0.76,  Adjusted R-squared:  0.7583 
+## F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Using the <code>summary()</code> command, R will spit out a bunch of information about the results of our linear regression.</p>
+<p>For example, the coefficient for <code>Sepal.Length</code> is 1.85843 - this is the <span class="math inline">\(m\)</span> value in our classical linear equation.
+Meanwhile, the estimate for our y-intercept is -7.10144.
+Putting these into our equation, we can say that the best linear equation to describe the relationship between petal length and sepal length is:</p>
+<p><span class="math display">\[
+Petal.Length = 1.85843*Sepal.Length -7.10144
+\]</span>
+Now that we have this line, we can put it on top of our scatter plot!</p>
+<pre class="r"><code># the abline() function can be used to directly put linear model objects onto a plot
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length,
+     main = &quot;Iris sepal and petal dimensions&quot;,
+     ylab = &quot;Petal length (cm)&quot;,
+     xlab = &quot;Sepal length (cm)&quot;,
+     col = iris$Species)# ,
+     #pch = 19)
+abline(linear.model)
+legend(x = 4.2,
+       y = 7, 
+       legend = unique(iris$Species),
+       fill = c(&#39;black&#39;,&#39;red&#39;,&#39;green&#39;))</code></pre>
+<p><img src="/teaching/conservation/IntroR/BIOL416_Tutorial2_IntroR_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p><em>Brief conversation about whether the regression actually means anything given the species level differences</em>.</p>
+<div id="end-here" class="section level5">
+<h5>END HERE</h5>
+<p>Finally, we probably also want to know if the relationship between these two variables is statistically significant.</p>
+<pre class="r"><code>lm.anova &lt;- anova(linear.model)
+lm.anova</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: Petal.Length
+##               Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## Sepal.Length   1 352.87  352.87  468.55 &lt; 2.2e-16 ***
+## Residuals    148 111.46    0.75                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Finally, just like with other objects, we can pull out individual datum from this object.</p>
+<p>For example, to save the p-value of the Sepal.Length coefficient returned by the model fitting:</p>
+<pre class="r"><code>lm.anova$`Pr(&gt;F)`</code></pre>
+<pre><code>## [1] 1.038667e-47           NA</code></pre>
+<pre class="r"><code># Note that the NA is because there is no P value for the Residuals in the model - residuals measure the extra noise that is not captured by the linear model.</code></pre>
+<p>Don’t forget to save your work, and see you next week for more about R and how to use it to manipulate and work with phylogenies.</p>
+</div>
+</div>
+</div>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<ul>
+<li>objects - 0d, 1d, 2d</li>
+<li>indexing objects:
+<ul>
+<li>with <code>$</code> if the components of the object are named or in <strong>lists</strong></li>
+<li>with <code>[]</code> in all cases; if 2d, use multiple indexes with <code>[,]</code></li>
+</ul></li>
+<li>operations - math, comparisons</li>
+<li>functions - more complex operations that are often pre-compiled</li>
+<li>plotting - many different types, generally you pass on graphical parameters within the <code>plot()</code> call itself or, in some cases, after <code>plot()</code> has been called</li>
+<li>statistics - R can perform many, many statistical analyses - many simple statistical tools are available right away in R, and many others are available through libraries (which we’ll discuss next week)</li>
+</ul>
+<p>Summary with why to follow these steps:</p>
+<ul>
+<li>species bounded regressions, explain why is this important?</li>
+<li>does the relationship hold for the species individually?</li>
+</ul>
+</div>
+</div>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/teaching/conservation/intror/biol416_introduction_to_r_notes/" title="BIOL 416 R Tutorial 1 - Introduction to R"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/teaching/conservation/12.12.2018.biol416.rphylotutorial_post/" title="BIOL 416 R Tutorial 2 - Phylogenies in R" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1558662433"></script>
+    <script src="/js/perfect-scrollbar.min.js?1558662433"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1558662433"></script>
+    <script src="/js/jquery.sticky.js?1558662433"></script>
+    <script src="/js/featherlight.min.js?1558662433"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1558662433"></script>
+    <script src="/js/highlight.pack.js?1558662433"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1558662433"></script>
+    <script src="/js/learn.js?1558662433"></script>
+    <script src="/js/hugo-learn.js?1558662433"></script>
+
+    <link href="/mermaid/mermaid.css?1558662433" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1558662433"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

@@ -1,0 +1,113 @@
+---
+title: "BIOL 416 R Tutorial 6 - Biodiversity-ecosystem function in plant communities pt. 2: Phylogenies"
+author: "Mairin Deith"
+output:
+  html_document:
+    highlight: zenburn
+    theme: spacelab
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
+---
+
+In this week's tutorial, we will calculate phylogenetic diversity in each plant community from last week's dataset of experimental plant communities.
+Then, we will consider how well two different measures of biodiversity - species richness, calculated last week, and phylogenetic diversity - predict the average aboveground biomass produced in the experimental plots.
+
+Like last week, we will be working with a dataset that includes annual observations of experimental plots.
+Data include each plot's above-ground biomass and a record of which species make up its plant community.
+**BEF2.csv** can be downloaded from the Tutorial 5 folder on Canvas.
+
+Try to follow these steps on your own first, but don't worry if you get stuck.
+Intermittently through the tutorial, we will go through the analysis as a class to catch everyone up.
+
+## Instructions
+
+### BEF analysis: Review from last week
+
+**If you did not finish last week's instructions, go back and finish those steps first!**
+[Tutorial 5's instructions can be downloaded from Canvas at this link, or from the Tutorial 5 folder.](https://canvas.ubc.ca/courses/18228/files/3931684/download?download_frd=1)
+
+After finishing last week's tutorial and instruction set, you should have code that can do the following:
+
+1. Calculate species richness and average aboveground biomass (**AAB**) for each experimental plot in the study - this requires a functional `for(...)` loop!
+2. Plot the relationship between species richness and AAB across communities in a scatterplot.
+3. Run two linear regressions, $AAB \sim Richness$ and $AAB \sim ln(Richness)$, and compare their results using summary statistics from the model object.
+
+### BEF analysis: Phylogenetic diversity
+
+Last week we investigated whether species richness was a significant predictor of a plant's community above-ground biomass production.
+This week, we are considering a different facet of biodiversity: **phylogenetic diversity, PD**.
+Specifically, we want to see if PD is a *better* predictor of biomass production than species richness.
+
+If you need a review of PD, see Tutorial 3.
+
+Before starting the analysis, think about this question:
+
+<center>
+**Why would PD be a better or worse measure of biodiversity when we consider the *Biodiversity-Ecosystem Function* relationship?**
+</center>
+
+To do this, we will:
+
+   a) Calculate phylogenetic diversity in each community using a phylogeny comprised of genetic changes between lineages
+   b) Add these results to our table of species richness and AAB in each plot from last week
+   c) Run a linear regression of $AAB \sim PD$
+   d) Compare the linear regression of $AAB \sim PD$ with those from last week, $AAB \sim Richness$ and $AAB \sim ln(Richness)$ using outputs from the linear regression
+   e) Re-calculate PD after calibrating the phylogenetic tree to represent chronological time
+
+### BEF analysis: Step-by-step
+
+1. Load the `ape` or `picante` library into R. See your code from Tutorial 3 (Introduction to Phylogenetic Diversity in R) if you're stuck or the notes posten on Canvas.
+
+2. Use the `read.tree` function to read in the phylogenetic tree of the plant species in the experimental communities, `phylogeny.phy`.
+This phylogenetic tree does not measure time like the `owls.tre` phylogeny we looked at in Tutorial 3 - instead, this tree shows the distance between species using molecular substitutions.
+It is not an ultrametric tree (i.e. a tree where all of the species are 'lined up' on the right-hand side of the tree).
+This is because species that share a common ancestor may have different numbers of molecular substitutions since they diverged even though they have lived for the same amount of evolutionary time.
+
+<center>
+**How might our interpretation of PD change knowing that the genes used to construct the phylogeny are non-nuclear?**
+</center>
+
+3. Plot the phylogenetic tree.
+**Do you notice anything odd about it?**
+
+4. We're going to start by calculating only PD for the `X2` plot, just like in Tutorial 5.
+First, subset the BEF data frame (`BEF2.csv` from last week) so it includes only observations from the `X2` plot.
+
+5. Create a phylogenetic tree that only includes species that were present in the first year of observations in `X2` **and include the species named OUTGROUP!**
+You'll have to drop the tips of the phylogenetic tree that aren't represented in the communities - see the script from Tutorial 3 if you are stuck.
+
+<center>
+**Why do we need to include an OUTGROUP species?**
+
+*Hint: what would a phylogenetic tree for a 1-species community look like? How much edge length*
+</center>
+
+6. Calculate PD by adding together the `$edgelengths` component of the phylogenetic tree you made in Step 5.
+
+7. Just like for species richness, repeat Steps 4-6 for each plot, one-at-a-time.
+You can now either modify your existing `for(...)` loop from last week, or you can write a new `for(...)` loop just to create phylogenetic trees and calculate PD for each plot.
+
+8. Add the PD calculations to the results data frame that we used to store species richness and AAB from last week's code.
+
+9. Create and run a linear model that predicts AAB as a function of PD in each plot.
+
+10. Plot the relationship between PD and AAB with a scatterplot and overlay the linear regression created in Step 9.
+
+11. Interpret this relationships and compare the PD results with those from the linear regression of AAB against species richness.
+How do the coefficients and intercepts compare between the linear models of species richness and PD?
+Using model outputs, which description of biodiversity (SR, ln(SR), or PD) best predicts AAB?
+
+12. For your assignment, you will also need to create a new phylogenetic tree.
+The phylogenetic tree is based on the number of genetic substitutions in a few selected genes.
+Use the `chronoMPL()` and save its results to a new phylogenetic tree.
+
+14. Repeat Steps 3-11 with the new phylogenetic tree, and compare which measure of phylogenetic distance - time or substitutions - is a better predictor of AAB.
+
+15. Write up your observations to answer the questions posted on Canvas in the Tutorial 6 - Biodiversity & Ecosystem Function pt 2 folder.
+Instructions are on the last few slides of the **BIOL416 T6.pdf** in Tutorial 6's folder on Canvas.

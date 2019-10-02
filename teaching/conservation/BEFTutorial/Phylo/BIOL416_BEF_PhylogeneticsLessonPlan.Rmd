@@ -1,0 +1,119 @@
+---
+title: "BIOL 416 R Tutorial 5 - Biodiversity-ecosystem function in plant communities"
+author: "Mairin Deith"
+output:
+  html_document:
+    highlight: zenburn
+    theme: spacelab
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
+---
+
+```{r, include=F}
+setwd("~/Documents/Teaching/416_Spring19/Tutorials/BEFTutorial/Phylo/")
+```
+
+Read in packages and input files:
+```{r}
+library(ape)
+tree<-read.tree("phylogeny.phy")
+
+bef.data<-read.csv("../BEF2.csv", header=T)
+```
+
+### Setup the for-loop and dataframe to store results
+
+```{r}
+plots<-unique(bef.data$Plot)
+
+#!# AAB = average above-ground biomass
+results.df <- data.frame(
+  Plots = plots,
+  SR = NaN,
+  PD = NaN,
+  PD.trans = NaN,
+  AAB = NaN
+)
+```
+
+Practice for plot X2:
+```{r}
+sub.data <- subset(bef.data, Plot == "X2")
+drop.spp <- colnames(sub.data)[
+  which(sub.data[1, ]==0)
+]
+keep.spp <- colnames(sub.data)[
+  which(sub.data[1, ]==1)
+]
+```
+
+Use `drop.tip(...)` function to drop the species with 0 recorded in the BEF2.csv:
+```{r}
+phylo2 <- drop.tip(phy = tree, tip = drop.spp)
+plot(phylo2)
+```
+
+**Note: extra species are included in the phylogeny along with the OUTGROUP!** 
+These species are included in the phylogeny but were not present in the BEF2.csv (perhaps explaining why there are communities with zero species but some AAB).
+
+Compare these species to:
+```{r}
+keep.spp
+```
+
+### For-loop 
+
+```{r}
+time.tree <- chronoMPL(tree)
+
+for (i in 1:length(plots)){
+  sub.data<-subset(bef.data,Plot==plots[i])
+  species<-sub.data[,3:20]
+  spp<-colnames(species)[species[1,]==1]
+  results.df$SR[i]<-length(spp)
+  results.df$AAB[i]<-mean(sub.data$AbvBioAnnProd)
+
+# prune species NOT in the plots form the phylogeny
+  subtree.s<-drop.tip(tree, tree$tip.label[!tree$tip.label %in% c(spp,"OUTGROUP")])
+  subtree.t<-drop.tip(time.tree, time.tree$tip.label[!time.tree$tip.label %in% c(spp,"OUTGROUP")])
+# note hear that we always include the OUTGROUP in the tree even though it is not included in any of the plots
+# this is equivalent to adding a constant to the plot PD.
+# It is necessary to do this, otherwise plots with species richness of one
+# will crash the calculations of PD because you cannot have a tree with just one taxon (it is a stick!)
+
+#sum edge lengths of pruned tree - this returns the phylogenetic diversity of included species
+  results.df$PD[i]<-sum(subtree.s$edge.length)
+  results.df$PD.trans[i]<-sum(subtree.t$edge.length)
+}
+```
+
+### Models
+**Jonathan removed plots with zero species (these still have biomass recorded because not all species were included in this dataframe)** - this is why there was a glut of values at the low end of PD. 
+The plots below do not have the zeroes removed.
+
+```{r}
+
+# model.data<-subset(results.df, SR>0)
+model.data <- results.df
+
+model.PD.s<-lm(AAB~PD, data=as.data.frame(model.data))
+model.PD.t<-lm(AAB~PD.trans, data=as.data.frame(model.data))
+summary(model.PD.s)
+```
+
+### Plots
+```{r}
+plot(model.data$PD, model.data$AAB, xlab = "Phylogenetic Diversity (substitutions)", ylab = expression(paste("Biomass (g/m"^"2", ")")), cex = 1.25,cex.lab = 1.5, cex.axis = 1.25)
+lines(model.data[,"PD"], predict(model.PD.s), lwd = 1.5)
+```
+
+```{r}
+plot(model.data$PD.trans, model.data$AAB, xlab = "Phylogenetic Diversity (time)", ylab = expression(paste("Biomass (g/m"^"2", ")")), cex = 1.25,cex.lab = 1.5, cex.axis = 1.25)
+lines(model.data[,"PD.trans"], predict(model.PD.t), lwd = 1.5)
+```

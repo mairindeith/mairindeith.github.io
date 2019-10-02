@@ -1,0 +1,267 @@
+---
+title: "BIOL 416 R Tutorial 5 - Biodiversity-ecosystem function in plant communities"
+author: "Mairin Deith"
+output:
+  html_document:
+    highlight: zenburn
+    theme: spacelab
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
+---
+
+## Spiel
+
+We want species around so we can support ecosystem functioning - more diverse, species-rich communities support more ecological functions
+
+Much debate, then supported by small experimental plots that differ by SR of plots (monocultures to 14 different species)
+
+If species occupy diff niches, when you put them together the ecosystem in the plot = max niche usage = carbon fixed through photosynthesis, plant growth
+
+More takeup/utilization of resources = more biomass 
+Measure of ECOSYSTEM FUNCTION, often in g of carbon/m2
+
+Slide 1:
+Saturating relationship (e.g. N being removed from the soil, plateaus)
+
+We would expect this to level out - 7 or 8 represents that there are 7 or 8 unique niches. 
+Maximum niches? Could be a way of indicating the dimensions of that ONE NICHE (1-D niche space)
+
+More species = competing for the same resource, fewer allows for species to find their own unique niche space
+
+2 explanations:
+
+1. Occupancy of niche space - species better cover the total niche space, each circle = occupancy in niche space (multiple dimensions)
+
+2. Selection effect - species with higher than average monoculture yields dominate the mixture (aka. sampling effect) --> due to chance 
+
+Lots of debate over which method is true - there always seemed to be a tend towards higher productivity in more speciose communities
+
+Papers by mathematicians realized you can partition the variation in productivity into these two components - quantify what proportion can be attributed to complementarity and selection 
+Complementarity = species yields higher than the average monoculture yield
+
+Now what if we turn this on its head, so we're losing species instead of gaining them:
+
+1. Rivet hypothesis - ecosystems seem okay for a time, but there's some species that keeps it all together; at some point the wings fall off but we don't know which rivets are important (e.g. planetary boundaries, tipping point - where is it, how do we know?)
+
+2. Drivers and passengers more like the driver/passenger effect - keystone species idea; more productive systems more likely to sample species with high functioning
+
+Varies across space, and across ecosystem types (e.g. Greece - water limitation)
+
+Different shapes:
+
+1. Rivet hypothesis
+2. Catastrophic loss - every species is critical, removing one of those 'cogs' makes the system ineffective (**different trophic levels tend to show different relationships**)
+3. Proportional - complementarity effect 
+
+## Exercise
+
+The purpose of this tutorial is to investigate how the **species richness** of plant communities influences the **average biomass produced** by those communities.
+
+What ecological process can best explain that model?
+
+## Setting up the analysis
+
+### Set the working directory 
+
+We need to tell R where to find the BEF files.
+This is possible by changing the **working directory**, the location on your computer's file system where R will run commands.
+
+```{r setup, include=F, eval=TRUE}
+# NOTE FOR FUTURE: This HAS TO BE NAMED r setup!!!
+
+library(knitr)
+opts_knit$set(root.dir = "~/Documents/Teaching/416_Spring19/Tutorials/BEFTutorial/")
+```
+
+_Hint: Try using Tab to autocomplete the file path - this is helpful if you don't know exactly what your folders are named_. 
+
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
+# For Unix (MacOS and Linux), it's safe to start from your home directory:
+setwd("~/Documents/Teaching/416_Spring19/Tutorials/BEFTutorial/")
+
+# For Windows users, it's safest to start at the C: drive and go from there:
+setwd("C:/...")
+```
+
+### Load the csv 
+
+```{r}
+bef.data <- read.csv("BEF2.csv", header=TRUE)
+```
+
+Notice that we provide a new argument to this `read.csv()` call that we didn't use last week: `header = TRUE`. If we look at the csv file, notice that the first line contains column names. 
+
+When we first read in the csv, we can tell R to assign column names to the data frame based on the first row of data in the csv file. 
+
+### Examine the BEF data
+
+Let's take a look at the data we just read into R. 
+```{r}
+head(bef.data)
+```
+
+We can see that our data frame contains columns for: 
+
+- years of observations
+- a plot ID (for each unique sample plot)
+- each species, where the presence of that species is indicated with a `1`; absence with a `0`
+   - There are 17 possible species listed in columns 3 to 20
+
+```{r}
+colnames(bef.data)[3:20]
+```
+
+## Analysis Overview
+
+To determine if there is a significant relationship between species richness and biomass production in plant communities:
+
+   a) Calculate richness and mean biomass in each community
+   b) Run a linear regression of both: 
+   $$Biomass \sim m * Richness + b$$ 
+   $$Biomass \sim m * ln(Richness) + b$$
+   ...where $m$ is the coefficient/slope for $Richness$ and $b$ is the y-intercept of the linear regression.
+   
+   c) Interpret and plot the results of (b)
+   
+## Step-by-step instructions
+
+### The first plot - calculate SR and biomass
+
+1. Start with just one plot, `X2`. Create a data frame that contains only the observations for that one plot with `subset()`:
+
+```{r, include = T}
+sub.data<-subset(bef.data,Plot=='X2')
+```
+
+2. Count how many species are in that plot. There are a couple ways you could do this:
+
+    a. Create a new data frame that only includes species with a `1` in the observation table, then count the number of species columns in that data frame
+
+```{r}
+# Isolate the species in the list
+species <- sub.data[,3:20]
+
+# Find the species present
+spp <- colnames(species)[species[1,]==1]
+species.richness <- length(spp)
+```
+
+    b. Sum across each row to get species richness in each year
+```{r}
+# Isolate the species in the list
+species <- sub.data[,3:20]
+
+# Sum across (the first year, all years have the same SR)
+species.richness <- sum(species[1,])
+```
+
+3. Calculate the average biomass (mean across years) in each plot
+
+```{r}
+mean.biomass <- mean(sub.data$AbvBioAnnProd)
+```
+
+### Iterate over all plots with a `for` loop
+
+4. We could repeat steps 1-3 for all plots one-at-a-time, but we can use a programming technique called loops to automatically apply the code we wrote for the first plot to all plots in the study. 
+
+    a. Create a data frame to store the final results in
+  
+```{r}
+# First, create a list of all plots
+
+plots <- unique(bef.data$Plot)
+
+plot.data <- data.frame(
+  plot = plots,
+  richness = NA,
+  biomass = NA
+)
+```
+
+    b. Write a for loop that calculates SR and biomass for each plot individually, then put the results into the data results data frame
+
+```{r}
+# Just like the code above, but tucked within a for loop
+for(i in 1:length(plots)){
+  p <- plots[i]
+  plot.subset <- subset(bef.data, Plot==p)
+  plot.species <- plot.subset[,3:20]
+  
+  # Calculate species richness at the start of the time series
+  plot.sr <- sum(plot.species[1,])
+  
+  # Calculate mean biomass across the time series
+  plot.biomass <- mean(plot.subset$AbvBioAnnProd)
+  
+  plot.data[i,"richness"] <- plot.sr
+  plot.data[i,"biomass"] <- plot.biomass
+}
+```
+
+### Linear regressions and plotting
+
+5. Construct and interpret a linear model that looks at:
+
+    a. Biomass as a function of species richness
+```{r}
+model <- lm(biomass ~ richness, data = plot.data)
+summary(model)
+```
+    b. Biomass as a function of ln-transformed species richness
+```{r, error=T}
+# This will result in an error:
+model.log <- lm(biomass ~ log(richness), data = plot.data)
+```
+
+The error here is because we are trying to take the natural logarithm of 0, which results in infinity. 
+You can't regress against infinity, so we need to only select those plots that have at least 1 species in it
+```{r}
+which(plot.data$richness == 0) # Five sites have no species
+plot.data.log <- subset(plot.data, richness > 0)
+```
+```{r}
+model.log <- lm(biomass ~ log(richness), data = plot.data.log)
+summary(model.log)
+```
+
+
+6. Plot each of these relationships
+```{r}
+plot(x = plot.data$richness, 
+     y = plot.data$biomass, 
+     ylab = "Biomass (g/m2)",
+     xlab = "Species richness")
+abline(model)
+```
+
+```{r}
+plot(x = log(plot.data.log$richness), 
+     y = plot.data.log$biomass, 
+     ylab = "Biomass (g/m2)",
+     xlab = "ln(Species Richness)")
+abline(model.log)
+```
+
+7. Interpret these relationships - what do the coefficients and intercepts tell us about species richness and how it influences biomass production?
+
+### Comparing models with R2
+
+8. Compare the ability of the ln-transformed and untransformed species richness to predict biomass production. 
+
+**Hint: you can do this by considering the `Multiple R-squared` object in our linear model.**
+
+R2 is a measure of how much variation in the data is not explained by the linear relationship we just made.
+It tells us how much information about $y$, in this case `biomass`, can be explained if we know what $x$, `richness`, is. 
+
+$$r^2 = 1 - \frac{SS_{reg}}{SS_{tot}}$$
+
+![Here's a visual example](https://d2jmvrsizmvf4x.cloudfront.net/Yf5q7liBRKrDmFPk2PWA_Fit%2520of%2520linear%2520regression.gif)
+
+A higher R2 means that more of the variation we see in biomass can be attributed to that measure of richness, so we can say that the mathematical relationship with a higher R2 is a stronger description of what's going on in these study plots. 

@@ -1,0 +1,166 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={R Assignment 1: Biodiversity - Ecosystem Function},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{R Assignment 1: Biodiversity - Ecosystem Function}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+\maketitle
+
+In Tutorials 5 and 6, we have been analysing different facets of
+biodiversity and how it relates to ecosystem function in experimental
+plant communities.
+
+The four measures of biodiversity we calculated are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Species richness
+\item
+  Ln-transformed species richness
+\item
+  Phylogenetic diversity using a phylogeny based on on genetic
+  substitutions (the original \texttt{phylogeny.phy} file from Tutorial
+  6)
+\item
+  Phylogenetic diversity with a phylogenetic tree that has been
+  transformed to have branch lengths that reflect time rather than
+  substitutions (the phylogeny created by the \texttt{chronoMPL()}
+  function from the \texttt{ape} library)
+\end{enumerate}
+
+Now that you have examined the biodiversity - ecosystem function
+relationship in these plant communities, please write up a written
+report that addresses the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{2 points}: Show your plots of species richness against
+  above-ground biomass - these plots should include axes titles with
+  appropriate units of measure and with an overlaid line of best fit
+  from the linear model. Show both untransformed and transformed species
+  richness' relationships.
+\item
+  \emph{1 point}: Describe the shape of the relationship between species
+  richness and productivity. Also describe the linear model that
+  generates this observed relationship. How does the observed
+  relationship compare to the expected shape of the B-EF relationship?
+  What mechanisms of the B-EF relationship does your model predict? How
+  confident are you of this?
+\item
+  \emph{1 point}: Discuss the likely ecological process(es) that you
+  think shaped the observed richness-biomass relationship. Consider the
+  alternative processes and how you might test your hypothesis for which
+  one caused the B-EF relationship.
+\item
+  \emph{2 points}: Like Question 1, show the plots of PD versus
+  productivity for the substitution-based PD and the transformed
+  phylogeny's PD. Again, axes should be labelled with appropriate units
+  with an overlaid line of best fit from the linear model.
+\item
+  \emph{1 point}: Is the PD model you generated a better fit than the
+  models with species richness? What did you initially predict would be
+  a better fitting model? Did the model support your predictions?
+\item
+  \emph{1 point}: How did transforming the branch lengths in the
+  phylogenetic tree alter your model fitting results? Discuss why this
+  phylogeny was better or worse in explaining the observed variation in
+  above-ground biomass.
+\end{enumerate}
+
+This assignment is worth 10\% of your final grade. 2 points of the 10
+total will come from your R code's ability to execute and produce the
+necessary plots.
+
+Your report should be between 500-800 words long (approximately 2
+type-written pages). Submit your written answers to the questions above
+AND your R code to Canvas in your section's \emph{Tutorial 5/6 -
+Biodiversity \& Ecosystem Function} folder.
+
+Your code and written answers should be submitted \textbf{2pm on Monday,
+February 25 or Wednesday, February 28} depending on whether you are in
+the Monday or Wednesday tutorial section.
+
+
+\end{document}
